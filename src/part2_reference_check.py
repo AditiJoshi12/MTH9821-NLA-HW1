@@ -1,5 +1,8 @@
 """
-part2_reference_check.py -- Part 2 "Numerical reference" verification.
+part2_reference_check.py -- Part 2, SUPPLEMENTARY cross-check: the same refinement
+study applied to OUR independent solver (the required study is the supplied
+`reference_solver.py --verify`, run by part2_supplied_verify.py).  The
+N = 180 -> 360 comparison (n_change_table) uses the SUPPLIED arrays.
 
 The assignment asks us to run `python reference_solver.py -verify` and
 report the largest price and boundary changes under SPATIAL and
@@ -72,17 +75,20 @@ def refinement_table():
 
 
 def n_change_table():
-    """V_{360} - V_{180}: more exercise rights -> value can only rise."""
+    """V_{360} - V_{180} from the SUPPLIED fine reference arrays (assignment:
+    "Use the supplied fine reference arrays in every comparison").
+    More exercise rights -> the value can only rise."""
+    from reference import load_reference
     rows = []
     for d in cfg.DELTAS:
-        r1, _ = _run(180, d)
-        r2, _ = _run(360, d)
-        dv = _V(r2, np.array(SPOTS)) - _V(r1, np.array(SPOTS))
+        r1, r2 = load_reference(180, d), load_reference(360, d)
+        dv = [r2.value_at(s) - r1.value_at(s) for s in SPOTS]
+        grid = np.array([r2.value_at(s) - r1.value_at(s) for s in S_EVAL])
         # common dates: t_j^{180} = t_{2j}^{360}; skip j = N (both = K)
         db = r2.boundary[0:360:2] - r1.boundary[:180]
         rows.append(dict(delta=d, **{f"dV({int(s)})": v for s, v in zip(SPOTS, dv)},
-                         min_dV_grid=np.min(_V(r2, S_EVAL) - _V(r1, S_EVAL)),
-                         max_db=np.max(np.abs(db)), mean_db=np.mean(db)))
+                         min_dV_grid=grid.min(), max_db=np.max(np.abs(db)), mean_db=np.mean(db),
+                         source=r1.source))
     return pd.DataFrame(rows)
 
 

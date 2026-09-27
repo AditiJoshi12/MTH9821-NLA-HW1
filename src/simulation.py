@@ -12,21 +12,21 @@ Transition between post-jump grid states (assignment, Part 2):
   factor applies only on arrival at a dividend index (j+1), never at the
   starting index.  (Needed for Part 4's random starts.)
 
-RANDOM-DRAW ORDER -- ASSUMPTION (flag in the report)
-----------------------------------------------------
-The assignment says the draw order is documented in the supplied
-README.md, which we have not seen.  Until then we use the order below,
-chosen to be simple and reproducible.  If README.md differs, only the
-functions `sample_A`, `training_paths_LS` and `evaluation_normals`
-need to change.
-  * sample_A(rng, n):  u = rng.random(n)            (mixture coin, <1/2 -> log-uniform branch)
-                       a = rng.uniform(log .001, 0, n)
-                       b = rng.uniform(0.2, 1.2, n)
-                       A = K * where(u < 1/2, exp(a), b)
-  * LS training (seed 1000+c): S0 = sample_A(rng, 32768), THEN
-                       Z = rng.standard_normal((32768, N))
-  * evaluation (seed 4000+10c+a): 10 batches of 5,000 paths, each
-                       Z_batch = rng.standard_normal((5000, N)), in order.
+RANDOM-DRAW AND ARITHMETIC CONVENTIONS (supplied reference_README.md)
+---------------------------------------------------------------------
+Each sample bank uses its own np.random.default_rng(seed); M = path count.
+  1. A (M starting prices): v = rng.random(M), THEN u = rng.random(M);
+     A = K exp(log(0.001)(1-u)) if v < 0.5, else K (0.2 + u).
+  2. Regression paths (seed 1000+c): A, then rng.standard_normal((M, N)).
+  3. Random-start NN bank: J = rng.integers(0, N, size=M, dtype=int64),
+     then A, then the full (M, N) normal array.  Column j drives the
+     increment whose target date is j+1; its log increment is set to zero
+     when j+1 <= J, so S = A in every slot through J.
+  4. Log increments = drift + vol * Z, plus log1p(-delta) in the columns
+     immediately preceding dividend indices; np.cumsum across columns,
+     exponentiate, multiply by the starting price.
+  5. Evaluation (seed 4000+10c+a): ten consecutive (5000, N) normal arrays
+     from one advancing generator, reused for every policy at that spot.
 """
 
 import numpy as np
@@ -40,67 +40,55 @@ LOG_A_LO = np.log(0.001)
 # Training distribution A
 # ---------------------------------------------------------------------------
 def sample_A(rng: np.random.Generator, n: int) -> np.ndarray:
-    """Mixture: w.p. 1/2 log(A/K) ~ U[log 0.001, 0]; w.p. 1/2 A/K ~ U[0.2, 1.2].
+    """Mixture A (README rule 1): two uniforms per path, v then u.
 
-    We draw ALL three uniforms for every path (rather than only the branch
-    that is used) so the number of draws is fixed and the stream position
-    after the call does not depend on the coin outcomes.
+    v < 1/2 -> log(A/K) = log(0.001)(1-u), uniform on [log 0.001, 0];
+    else    -> A/K = 0.2 + u, uniform on [0.2, 1.2].
     """
-    coin = rng.random(n)
-    a = rng.uniform(LOG_A_LO, 0.0, n)
-    b = rng.uniform(0.2, 1.2, n)
-    return cfg.K * np.where(coin < 0.5, np.exp(a), b)
+    v = rng.random(n)
+    u = rng.random(n)
+    return np.where(v < 0.5, cfg.K * np.exp(LOG_A_LO * (1.0 - u)), cfg.K * (0.2 + u))
 
 
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-def step_factors(tg: cfg.TimeGrid, delta: float, Z: np.ndarray, j0: int = 0) -> np.ndarray:
-    """Multiplicative factors for steps j0 -> j0+1 -> ... given normals Z.
-
-    Z has shape (n, k): column i drives step (j0+i) -> (j0+i+1).
-    Returns array of the same shape with the dividend factor included on
-    arrival at a dividend index.
-    """
-    k = Z.shape[1]
+def log_increments(tg: cfg.TimeGrid, delta: float, Z: np.ndarray) -> np.ndarray:
+    """README rule 4: column j (target date j+1) gets drift + vol*Z_j, plus
+    log1p(-delta) if j+1 is a dividend index.  Z has shape (n, N)."""
     drift = (cfg.R - 0.5 * cfg.SIGMA ** 2) * tg.h
     vol = cfg.SIGMA * np.sqrt(tg.h)
-    arrive = np.arange(j0 + 1, j0 + k + 1)                  # arrival indices
-    jump = np.where(tg.is_div[arrive], 1.0 - delta, 1.0)   # (k,)
-    return np.exp(drift + vol * Z) * jump[None, :]
+    div_col = tg.is_div[1:tg.N + 1]                       # target date j+1 is a dividend
+    return drift + vol * Z + np.where(div_col, np.log1p(-delta), 0.0)[None, :]
 
 
 def paths_from_t0(S0: np.ndarray, Z: np.ndarray, tg: cfg.TimeGrid, delta: float) -> np.ndarray:
-    """Full paths S_0..S_N (shape (n, N+1)) from t_0, float64.
-
-    Product of factors is computed as exp(cumsum(log)) for numerical
-    stability; the dividend enters as log(1-delta) at integer indices.
-    """
-    f = step_factors(tg, delta, Z, 0)
-    logS = np.log(S0)[:, None] + np.concatenate(
-        [np.zeros((len(S0), 1)), np.cumsum(np.log(f), axis=1)], axis=1)
-    return np.exp(logS)
+    """Full paths S_0..S_N (shape (n, N+1)) from t_0, float64:
+    S_j = S_0 * exp(cumsum of log increments up to column j-1)."""
+    inc = log_increments(tg, delta, Z)
+    S = np.empty((len(S0), tg.N + 1))
+    S[:, 0] = S0
+    S[:, 1:] = S0[:, None] * np.exp(np.cumsum(inc, axis=1))
+    return S
 
 
 def paths_from_J(J: np.ndarray, SJ: np.ndarray, Z: np.ndarray, tg: cfg.TimeGrid,
                  delta: float) -> np.ndarray:
-    """Paths started at random indices J with S_J = SJ (post-jump if J is a
-    dividend index).  Entries before J are NaN.  Z has shape (n, N);
-    column i drives step i -> i+1, and columns i < J are simply unused, so
-    a path's normals do not depend on other paths.  (Part 4 path banks.)
-    """
-    n, N = len(J), tg.N
-    f = step_factors(tg, delta, Z, 0)                      # (n, N)
-    cols = np.arange(N)[None, :]
-    logf = np.where(cols >= J[:, None], np.log(f), 0.0)    # ignore steps before J
-    logS = np.concatenate([np.zeros((n, 1)), np.cumsum(logf, axis=1)], axis=1)
-    S = SJ[:, None] * np.exp(logS)                         # constant up to J
-    S[np.arange(N + 1)[None, :] < J[:, None]] = np.nan
+    """Random-start paths (README rule 3).  The mask is applied BEFORE the
+    cumulative sum: log increments with target date j+1 <= J are zero, so
+    S = S_J = A in every slot through J (post-jump if J is a dividend
+    index).  Exercise before J is excluded by the callers (j_start)."""
+    inc = log_increments(tg, delta, Z)
+    target = np.arange(1, tg.N + 1)[None, :]
+    inc = np.where(target <= J[:, None], 0.0, inc)
+    S = np.empty((len(J), tg.N + 1))
+    S[:, 0] = SJ
+    S[:, 1:] = SJ[:, None] * np.exp(np.cumsum(inc, axis=1))
     return S
 
 
 # ---------------------------------------------------------------------------
-# Seeded path sets (see ASSUMPTION above)
+# Seeded path sets (README conventions above)
 # ---------------------------------------------------------------------------
 N_TRAIN_LS = 32_768
 N_EVAL = 50_000

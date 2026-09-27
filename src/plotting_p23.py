@@ -181,7 +181,7 @@ def fig_perturbation(sweep, required, gap, path):
             color=TEXT2, va="bottom")
     ax.set_xlabel("boundary shift a (fraction of K), then capped at U_j and floored at 0")
     ax.set_ylabel("price change ($)")
-    ax.set_title("Case 3, S0 = 100: price is flat near the boundary", loc="left", color=TEXT2)
+    ax.set_title("Case 3, S0 = 100: price change vs boundary shift", loc="left", color=TEXT2)
     ax.legend(fontsize=7, loc="lower left")
     fig.tight_layout(); fig.savefig(path, dpi=160); plt.close(fig)
 

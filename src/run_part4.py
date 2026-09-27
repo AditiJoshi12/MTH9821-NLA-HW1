@@ -39,7 +39,10 @@ class _LS:                                      # tiny adapter for the plotting 
 
 
 def main():
-    torch.set_num_threads(os.cpu_count())
+    # README reproducibility settings for the instructor run
+    torch.set_num_threads(2)
+    torch.set_num_interop_threads(1)
+    torch.use_deterministic_algorithms(True)
     lsz = np.load("fitted/ls_boundaries.npz")
     ls = {c: _LS(lsz[f"case{c}_boundary"]) for c in range(4)}
 
@@ -144,9 +147,10 @@ def main():
         torch=torch.__version__, numpy=np.__version__, python=platform.python_version(),
         torch_threads=torch.get_num_threads(), cpu_count=os.cpu_count(),
         device="cpu (no accelerator; nothing to synchronise when timing)",
+        torch_interop_threads=torch.get_num_interop_threads(), deterministic_algorithms=True,
         training_dtype="float32", validation_evaluation_dtype="float64",
         seeds=dict(torch_construction="5000+c", train_bank="2000+c", val_bank="3000+c"),
-        bank_draw_order_ASSUMED="J, then S_J ~ A, then (n, N) normals; see nn_policy.py",
+        bank_draw_order="README rule 3: J, then S_J ~ A, then (n, N) normals",
         selected={c: nn[c]["selected"] for c in nn},
         timings={c: nn[c]["timings"] for c in nn}, evaluation_s=eval_s),
         open("fitted/run_config_part4.json", "w"), indent=2)

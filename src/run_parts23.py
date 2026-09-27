@@ -56,6 +56,21 @@ for r in ref_tab.itertuples():
     put("p2_refinement", f"db[{r.refinement}]", r.db, c, "ref")
 timings["part2_reference_check_s"] = time.perf_counter() - t0
 
+import part2_supplied_verify as p2s
+ver, ver_log = p2s.supplied_verify()
+ver.to_csv("tables/p2_supplied_verify.csv", index=False)
+open("tables/p2_supplied_verify_log.txt", "w").write(ver_log)
+xchk = p2s.own_vs_supplied()
+xchk.to_csv("tables/p2_own_vs_supplied.csv", index=False)
+for r in ver.itertuples():
+    c = [k for k, v in sim.CASES.items() if v == (r.N, r.delta)][0]
+    for m in ("spatial_dV_max", "spatial_db_max", "temporal_dV_max", "temporal_db_max"):
+        put("p2_supplied_verify", m, getattr(r, m), c, "ref")
+for r in xchk.itertuples():
+    c = [k for k, v in sim.CASES.items() if v == (r.N, r.delta)][0]
+    put("p2_own_vs_supplied", "dV_max", r.dV_max, c, "own-solver")
+    put("p2_own_vs_supplied", "db_max", r.db_max, c, "own-solver")
+
 mart = pd.DataFrame([sim.martingale_check(c) for c in range(4)])
 mart.to_csv("tables/p2_martingale.csv", index=False)
 for r in mart.itertuples():
@@ -145,7 +160,7 @@ json.dump(dict(
     reference_source={c: load_reference(*sim.CASES[c]).source for c in range(4)},
     seeds=dict(ls_training="1000+c", evaluation="4000+10c+a"),
     sizes=dict(ls_training=sim.N_TRAIN_LS, eval_paths=sim.N_EVAL, eval_batch=sim.EVAL_BATCH),
-    draw_order_ASSUMED="see simulation.py docstring; replace with README.md order",
+    draw_order="supplied reference_README.md conventions (see simulation.py docstring)",
     precision="float64 throughout",
     versions=dict(python=platform.python_version(), numpy=np.__version__,
                   scipy=scipy.__version__),

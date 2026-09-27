@@ -1,9 +1,9 @@
 {
   "reference_source": {
-    "0": "own-solver",
-    "1": "own-solver",
-    "2": "own-solver",
-    "3": "own-solver"
+    "0": "supplied",
+    "1": "supplied",
+    "2": "supplied",
+    "3": "supplied"
   },
   "seeds": {
     "ls_training": "1000+c",
@@ -14,7 +14,7 @@
     "eval_paths": 50000,
     "eval_batch": 5000
   },
-  "draw_order_ASSUMED": "see simulation.py docstring; replace with README.md order",
+  "draw_order": "supplied reference_README.md conventions (see simulation.py docstring)",
   "precision": "float64 throughout",
   "versions": {
     "python": "3.11.15",
@@ -27,12 +27,12 @@
     "processor": "x86_64"
   },
   "timings_seconds": {
-    "part2_reference_check_s": 13.075216857999976,
-    "ls_fit_case0_s": 0.6659657159999597,
-    "ls_fit_case1_s": 0.6440759870000079,
-    "ls_fit_case2_s": 1.2082654939999884,
-    "ls_fit_case3_s": 1.2576225930000078,
-    "ls_total_s": 5.410899251000046,
-    "evaluation_preview_s": 7.987093260999984
+    "part2_reference_check_s": 9.03628155300001,
+    "ls_fit_case0_s": 0.4835286409999924,
+    "ls_fit_case1_s": 0.4932067379999978,
+    "ls_fit_case2_s": 1.008658827000005,
+    "ls_fit_case3_s": 1.1020246070000042,
+    "ls_total_s": 4.580786584000009,
+    "evaluation_preview_s": 5.091685950999988
   }
 }

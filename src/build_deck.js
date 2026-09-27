@@ -61,7 +61,7 @@ s.addText("Numerical reference, Longstaff–Schwartz regression and neural exerc
   { x: 0.6, y: 2.65, w: 8.8, h: 0.5, fontFace: BF, fontSize: 16, color: ICE, margin: 0, isTextBox: true });
 s.addText("Aditi Joshi, Helen Siavelis, Jaskaran Kalra, William McDonnell  ·  Baruch MFE, Scientific Computing in Finance",
   { x: 0.6, y: 4.5, w: 8.8, h: 0.4, fontFace: BF, fontSize: 12, color: ICE, margin: 0, isTextBox: true });
-s.addNotes("Draft deck. Parts 1-3 are complete; Parts 4-5 are placeholders. The reference is our own grid solver until the supplied reference_solver.py arrives.");
+s.addNotes("All reference numbers come from the supplied reference_results.npz; all random draws follow the supplied README conventions. Our own grid solver is used for the Part 1 illustrations and as an independent cross-check.");
 
 // ---- 2. Question & setup ---------------------------------------------------
 s = pres.addSlide();
@@ -85,7 +85,7 @@ bullets(s, [
   "Call: C(d⁻, s) = max{(s−K)⁺, C(d⁺, (1−δ)s)}; the max binds above s* (104.8 before d₃).",
   `Call value at S₀=100: correct ${fmt(D.call[3]["C(0,100)"])}, put-style ordering ${fmt(D.call[1]["C(0,100)"])}, European ${fmt(D.call[0]["C(0,100)"])}.`,
 ], 6.6, 1.35, 2.95, 3.6, 12);
-footer(s, "Our own grid solver, N = 180, δ = 0.0125. The put-style call exercises one grid step early and loses interest K(1 − e^(−rh)).");
+footer(s, "Our own grid solver (Part 1 illustration), N = 180, δ = 0.0125. The put-style call exercises one grid step early and loses interest K(1 − e^(−rh)).");
 s.addNotes("For the put, exercising just after the jump pays delta*s more with no time elapsed. For the call the intrinsic value falls at the jump, so the call must test exercise before applying the dividend.");
 
 // ---- 4. Item 2: the cap ----------------------------------------------------
@@ -117,24 +117,24 @@ s.addNotes("The second stat shows why the proof fixes a common stopping time bef
 
 // ---- 6. Part 2: reference verification ---------------------------------------
 s = pres.addSlide();
-title(s, "Refinement vs changing N", "Part 2 — the reference is precise to ~1e-5 $; changing N changes the problem itself");
+title(s, "Refinement vs changing N", "Part 2 — supplied --verify: precise to ~2e-5 $; changing N changes the problem itself");
 const hdr = { bold: true, color: WHITE, fill: { color: NAVY }, fontFace: BF, fontSize: 12 };
 const cell = (t, b = false) => ({ text: t, options: { fontFace: BF, fontSize: 12, color: INK, bold: b } });
 s.addTable([
   [{ text: "Change", options: hdr }, { text: "Max price change ($)", options: hdr }, { text: "Max boundary change ($)", options: hdr }],
-  [cell("Spatial dx/2, dx/4"), cell(sci(D.refine.spatial_dv)), cell(sci(D.refine.spatial_db))],
-  [cell("Time integration h/2, h/4"), cell(sci(D.refine.time_dv)), cell(sci(D.refine.time_db))],
-  [cell("Wider domain / kernel tails"), cell("0"), cell("≤ 3e-12")],
+  [cell("Spatial ΔS 0.10 → 0.05"), cell(sci(D.refine.spatial_dv)), cell(sci(D.refine.spatial_db))],
+  [cell("Time 16 → 32 substeps"), cell(sci(D.refine.time_dv)), cell(sci(D.refine.time_db))],
+  [cell("Our solver vs supplied arrays"), cell(sci(D.refine.own_dv)), cell(sci(D.refine.own_db))],
   [cell("N = 180 → 360", true), cell(sci(D.refine.N_dv), true), cell(fmt(D.refine.N_db, 3), true)],
 ], { x: 0.5, y: 1.45, w: 5.6, colW: [2.2, 1.7, 1.7], rowH: 0.45, border: { type: "solid", pt: 0.5, color: "D5DAE6" }, fill: { color: WHITE } });
 card(s, 6.4, 1.45, 3.1, 2.25);
 s.addText([
-  { text: "Placeholder reference", options: { bold: true, breakLine: true } },
-  { text: "Our own solver: exact Gaussian step on a log grid, dividend = exact 10-node shift, dx²/6 variance correction. European check ≈ 2e-5 $. Replace with the supplied -verify output." },
+  { text: "Supplied reference", options: { bold: true, breakLine: true } },
+  { text: "reference_solver.py --verify passed: saved arrays match a recomputation (≤ 2e-10). Finite differences, ΔS = 0.05, 32 substeps. Our independent log-grid solver agrees to within the refinement changes." },
 ], { x: 6.55, y: 1.55, w: 2.8, h: 2.05, fontFace: BF, fontSize: 11, color: INK, valign: "top", margin: 0, isTextBox: true });
-stat(s, "≈ 1e-5 $", "reference price precision (largest refinement change)", 0.5, 3.95, 2.7, BLUE);
+stat(s, "≈ 2e-5 $", "reference price precision (largest refinement change)", 0.5, 3.95, 2.7, BLUE);
 stat(s, "≈ 0.3 $", "boundary shift from N = 180 → 360: a different problem", 3.4, 3.95, 2.7, ORANGE);
-footer(s, "A claimed accuracy gain smaller than the reference's own precision (~1e-5 $ in price, ~1e-3 $ in boundary) cannot be resolved.");
+footer(s, "A claimed accuracy gain smaller than the reference's own precision (~2e-5 $ in price, ~2e-3 $ in boundary) cannot be resolved.");
 s.addNotes("Time refinement barely moves anything because the kernel integrates the lognormal step exactly. More exercise dates raise the value by ~1e-3 dollars and move the boundary by ~0.3 dollars, two orders of magnitude above the refinement changes.");
 
 // ---- 7. Part 2: simulation ----------------------------------------------------
@@ -144,11 +144,11 @@ D.martingale.forEach((z, i) => stat(s, (z >= 0 ? "+" : "") + z.toFixed(2),
   `case ${i}: N = ${i < 2 ? 180 : 360}, δ = ${i % 2 ? "0.0125" : "0"}`, 0.5 + i * 2.28, 1.45, 2.1, Math.abs(z) > 1.9 ? ORANGE : NAVY));
 bullets(s, [
   "Exact lognormal step, dividend applied on arrival at an integer dividend index; a start at a dividend date is post-jump.",
-  "Training mixture A: log-uniform on [0.001K, K] or uniform on [0.2K, 1.2K], each with probability 1/2.",
+  "Training mixture A (README rule): v, u uniform; A = K·0.001^(1−u) if v < 1/2, else K(0.2 + u).",
   "All four z-scores lie inside ±2; case 2 sits at the edge (1.96), which is plausible for one of four draws.",
-  "Assumed draw order (README.md not yet available): coin, log-uniform, uniform per path, then the path normals.",
+  "All banks follow the README draw order and arithmetic: one default_rng per bank, starts then normals, log1p(−δ) before dividend indices.",
 ], 0.5, 2.9, 9, 2.2, 13);
-s.addNotes("The draw order must be checked against the supplied README before submission; changing it changes every Monte Carlo number but not the method.");
+s.addNotes("Draw order and arithmetic follow the supplied README exactly, so the samples match the instructor run up to floating-point and library differences.");
 
 // ---- 8. Part 3: method ---------------------------------------------------------
 s = pres.addSlide();
@@ -179,7 +179,7 @@ s.addNotes("The clip upper bound is the most any continuation can be worth in ti
 s = pres.addSlide();
 title(s, "Why the largest crossing is the right one", "A cubic over [0.001K, K] cannot follow the curvature: H dips below zero near s ≈ 3");
 img(s, "figures/p23_H_example.png", 0.5, 1.35, 9, 1520, 544);
-footer(s, "Case 0, date j = 90. Selecting the largest crossing gives one exercise interval (0, b] and discards the spurious continuation pocket around s ≈ 3–33.");
+footer(s, "Case 0, date j = 90. Selecting the largest crossing gives one exercise interval (0, b] and discards the spurious continuation pocket around s ≈ 3–34.");
 s.addNotes("Nearly every date has two positive-to-negative crossings. The rule defines a single interval containing all smaller prices, which is the correct economic shape even though the polynomial itself says otherwise.");
 
 // ---- 10. Part 4: neural boundary ------------------------------------------------
@@ -219,8 +219,8 @@ D.nn_summary.forEach((r, i) => {
     { text: `E_mean ${fmt(e.ckpt0, 3)} → ${fmt(e.selected, 3)}`, options: { color: e.selected > e.ckpt0 + 0.005 ? ORANGE : (e.selected < e.ckpt0 - 0.005 ? BLUE : MUTED) } },
   ], { x: 6.5, y: y + 0.08, w: 2.9, h: 0.65, fontFace: BF, fontSize: 12, valign: "top", margin: 0, isTextBox: true });
 });
-footer(s, "Case 2: payoff training more than halved the boundary error. Case 0: the selected checkpoint drifted to b ≈ 0.49K near t₀, which few validation paths visit.");
-s.addNotes("Validation uses random start dates, so dates near t0 carry little weight. Case 0's selected checkpoint has a worse boundary than checkpoint 400 and loses 0.87 dollars at S0 = 60 in the fixed-start evaluation.");
+footer(s, "Checkpoint 0 was never selected, yet payoff training barely changed the boundary error in cases 0–2 and worsened it in case 3.");
+s.addNotes("Validation means differ by less than about 1.3 paired standard errors, so selection is close to picking among equals. The value is flat near the optimal threshold, so validation barely reacts to boundary changes.");
 
 // ---- 12. Figure 1 ----------------------------------------------------------------
 s = pres.addSlide();
@@ -235,7 +235,7 @@ img(s, "figures/fig2_final_dividend.png", 0.5, 1.3, 5.6, 992, 608);
 bullets(s, [
   "Right of the dotted line = before d₃ in calendar time: the reference sits exactly on the Part 1 bound.",
   "LS and NN stay below the cap there: the premium δs − K(1 − e^(−rε)) is only cents.",
-  "Left = after d₃: no dividend remains and the boundary rises to K; both fits are biased low (~0.15K).",
+  "Left = after d₃: no dividend remains and the boundary rises to K; LS is ~0.12K low, the NN only ~0.02K.",
 ], 6.3, 1.4, 3.2, 3.5, 12);
 s.addNotes("The cap supplies the known pre-dividend behaviour; the fitted functions only determine the shape below it.");
 
@@ -253,28 +253,28 @@ const nnE = D.errors.filter(e => e.method === "NN").map(e => e.E_mean);
 const loss = D.paired.filter(p => p.S0 > 60 && p.pair === "LS - ref-boundary policy").map(p => -p.diff);
 stat(s, `${(Math.min(...lsE) * 100).toFixed(0)}–${(Math.max(...lsE) * 100).toFixed(0)} % | ${(Math.min(...nnE) * 100).toFixed(0)}–${(Math.max(...nnE) * 100).toFixed(0)} %`, "mean boundary error E_mean of K: LS | NN", 6.35, 1.4, 3.15, ORANGE, 24);
 stat(s, `${fmt(Math.min(...loss), 2)}–${fmt(Math.max(...loss), 2)} $`, "paired LS price loss vs the reference boundary rule (same paths)", 6.35, 2.7, 3.15, BLUE, 24);
-s.addText("S₀ = 60 omitted: LS and the reference exercise at once (value 40); the NN loses 0.87 $ (case 0) and 0.03 $ (case 1) there. Smooth pasting makes price error roughly second order in boundary error.",
+s.addText("S₀ = 60 omitted: every policy exercises at once (value 40) except the case-3 NN, which loses 0.045 $ there. Smooth pasting makes price error roughly second order in boundary error.",
   { x: 6.35, y: 4.0, w: 3.15, h: 1.1, fontFace: BF, fontSize: 10.5, color: MUTED, margin: 0, valign: "top", isTextBox: true });
 s.addNotes("Every mean lies at or below the reference value, as it must: a frozen policy cannot beat the optimum. The perturbation study (a = ±0.02) is still to do.");
 
 // ---- 15. Perturbation -----------------------------------------------------------
 s = pres.addSlide();
-title(s, "Moving the boundary barely moves the price", "Part 5.3 — case 3, S₀ = 100: shift the NN boundary by aK, cap at U_j, floor at 0");
+title(s, "Too early costs, a bit later is free", "Part 5.3 — case 3, S₀ = 100: shift the NN boundary by aK, cap at U_j, floor at 0");
 img(s, "figures/p5_perturbation.png", 0.5, 1.3, 5.6, 992, 544);
 const pm = D.pert.find(p => p.a === -0.02), pp2 = D.pert.find(p => p.a === 0.02);
-stat(s, `${pm.mean_diff >= 0 ? "+" : ""}${fmt(pm.mean_diff, 3)} $`, `a = −0.02: SE ${fmt(pm.se_diff, 3)}; ${(100 * pm.frac_paths_changed).toFixed(0)}% of paths now exercise later`, 6.35, 1.3, 3.15, ORANGE, 24);
-stat(s, `${pp2.mean_diff >= 0 ? "+" : ""}${fmt(pp2.mean_diff, 3)} $`, `a = +0.02: SE ${fmt(pp2.se_diff, 3)}; cap binds on ${pp2.cap_binds_dates} of 360 dates`, 6.35, 2.6, 3.15, BLUE, 24);
-s.addText("Only paths that enter the shifted band change decision. The cap absorbs most of an upward shift (applied mean shift " + fmt(pp2.applied_shift_mean, 3) + "K). The NN sits ≈0.04K below the reference, so moving down hurts and moving up lands on the flat part.",
+stat(s, `${pm.mean_diff >= 0 ? "+" : ""}${fmt(pm.mean_diff, 3)} $`, `a = −0.02: SE ${fmt(pm.se_diff, 3)}; ${(100 * pm.frac_paths_changed).toFixed(0)}% of paths now exercise later`, 6.35, 1.3, 3.15, BLUE, 24);
+stat(s, `${pp2.mean_diff >= 0 ? "+" : ""}${fmt(pp2.mean_diff, 3)} $`, `a = +0.02: SE ${fmt(pp2.se_diff, 3)}; cap binds on ${pp2.cap_binds_dates} of 360 dates`, 6.35, 2.6, 3.15, ORANGE, 24);
+s.addText("Only paths entering the shifted band change decision; the cap absorbs much of an upward shift (applied mean shift " + fmt(pp2.applied_shift_mean, 3) + "K). The NN overshoots just after d₁, so exercising earlier hurts and waiting slightly longer helps.",
   { x: 6.35, y: 3.9, w: 3.15, h: 1.25, fontFace: BF, fontSize: 10.5, color: MUTED, margin: 0, valign: "top", isTextBox: true });
 footer(s, "Dots: the assignment's shifts (95% paired intervals). Line and band: our finer supplementary sweep on the same 50,000 paths.");
-s.addNotes("The optimal boundary itself moves by only " + (D.neff[0].E_mean_ref360_vs_ref180 * 100).toFixed(2) + "% of K between N = 180 and 360, 10 to 100 times less than the fitted errors, so changes of a fitted policy with N are learning error.");
+s.addNotes("The optimal boundary itself moves by only " + (D.neff[0].E_mean_ref360_vs_ref180 * 100).toFixed(2) + "% of K between N = 180 and 360, far less than the fitted errors, so changes of a fitted policy with N are learning error.");
 
 // ---- 16. Answer -------------------------------------------------------------------
 s = pres.addSlide();
 s.background = { color: NAVY };
 s.addText("How accurately must the boundary be learned?", { x: 0.6, y: 0.45, w: 8.8, h: 0.7, fontFace: HF, fontSize: 28, bold: true, color: WHITE, margin: 0, isTextBox: true });
-[["Less than it looks", "2–8% mean boundary error costs cents: the value is flat near the optimal threshold (smooth pasting)."],
- ["Except where paths go", "a small error at a heavily visited state (case-0 NN at t₀, S₀ = 60) costs 0.87 $."],
+[["Less than it looks", "2–7% mean boundary error costs cents to ~0.25 $: the value is flat near the optimal threshold (smooth pasting)."],
+ ["Where paths decide", "errors matter where paths cross the boundary: the case-3 NN has the smaller max error but the larger price loss."],
  ["Structure beats fitting", "the Part 1 cap gives the pre-dividend boundary exactly; both learners only fill in the rest."],
  ["Selection is noisy", `validation cannot separate checkpoints (all within ~2 SE); no fitted price exceeds the reference (max z = ${D.zmax.toFixed(2)}).`]].forEach(([h, t], i) => {
   const y = 1.45 + i * 0.8;
@@ -282,7 +282,7 @@ s.addText("How accurately must the boundary be learned?", { x: 0.6, y: 0.45, w: 
   s.addText([{ text: h + "  ", options: { bold: true, color: WHITE } }, { text: t, options: { color: ICE } }],
     { x: 1.2, y: y - 0.08, w: 8.2, h: 0.65, fontFace: BF, fontSize: 14, valign: "middle", margin: 0, isTextBox: true });
 });
-s.addText("Reference: our own validated grid solver (the supplied reference files were not available); draw order documented in the code.",
+s.addText("Reference: supplied reference_results.npz (--verify passed); draws follow the supplied README; our own solver agrees to ~1e-5 $.",
   { x: 0.6, y: 4.85, w: 8.8, h: 0.4, fontFace: BF, fontSize: 11, italic: true, color: ICE, margin: 0, isTextBox: true });
 
 pres.writeFile({ fileName: "../slides.pptx" }).then(() => console.log("wrote ../slides.pptx"));   // deliverable at the repo root

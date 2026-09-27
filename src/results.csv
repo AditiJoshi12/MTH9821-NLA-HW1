@@ -47,331 +47,355 @@ p2_refinement,3.0,360.0,0.0125,ref,,dV_spots[domain wider],0.0
 p2_refinement,3.0,360.0,0.0125,ref,,db[domain wider],0.0
 p2_refinement,3.0,360.0,0.0125,ref,,dV_spots[kernel tails n_sd=14],7.105427357601002e-15
 p2_refinement,3.0,360.0,0.0125,ref,,db[kernel tails n_sd=14],3.062439191126032e-12
-p2_martingale,0.0,180.0,0.0,,,z_(mean-theory)/se,0.11732009746830457
-p2_martingale,0.0,180.0,0.0,,,diff_dollars,0.014318252196787284
-p2_martingale,1.0,180.0,0.0125,,,z_(mean-theory)/se,0.6235766858711025
-p2_martingale,1.0,180.0,0.0125,,,diff_dollars,0.07339581158997532
-p2_martingale,2.0,360.0,0.0,,,z_(mean-theory)/se,1.9648976586926736
-p2_martingale,2.0,360.0,0.0,,,diff_dollars,0.24049376014531276
-p2_martingale,3.0,360.0,0.0125,,,z_(mean-theory)/se,0.22572589380247568
-p2_martingale,3.0,360.0,0.0125,,,diff_dollars,0.026601599804834564
+p2_supplied_verify,0.0,180.0,0.0,ref,,spatial_dV_max,1.5820832107493743e-05
+p2_supplied_verify,0.0,180.0,0.0,ref,,spatial_db_max,0.001559972502334972
+p2_supplied_verify,0.0,180.0,0.0,ref,,temporal_dV_max,1.834135722944552e-05
+p2_supplied_verify,0.0,180.0,0.0,ref,,temporal_db_max,0.0014653226724874457
+p2_supplied_verify,1.0,180.0,0.0125,ref,,spatial_dV_max,1.3565547554605928e-05
+p2_supplied_verify,1.0,180.0,0.0125,ref,,spatial_db_max,0.001559972502334972
+p2_supplied_verify,1.0,180.0,0.0125,ref,,temporal_dV_max,1.4707952182391182e-05
+p2_supplied_verify,1.0,180.0,0.0125,ref,,temporal_db_max,0.0014653226724874457
+p2_supplied_verify,2.0,360.0,0.0,ref,,spatial_dV_max,1.5690454580052915e-05
+p2_supplied_verify,2.0,360.0,0.0,ref,,spatial_db_max,0.0018464196980403358
+p2_supplied_verify,2.0,360.0,0.0,ref,,temporal_dV_max,9.532607830209372e-06
+p2_supplied_verify,2.0,360.0,0.0,ref,,temporal_db_max,0.0014773814601767299
+p2_supplied_verify,3.0,360.0,0.0125,ref,,spatial_dV_max,1.3290016692479867e-05
+p2_supplied_verify,3.0,360.0,0.0125,ref,,spatial_db_max,0.0018464196980403358
+p2_supplied_verify,3.0,360.0,0.0125,ref,,temporal_dV_max,7.700958621015275e-06
+p2_supplied_verify,3.0,360.0,0.0125,ref,,temporal_db_max,0.0014773814601767299
+p2_own_vs_supplied,0.0,180.0,0.0,own-solver,,dV_max,8.464318824508155e-06
+p2_own_vs_supplied,0.0,180.0,0.0,own-solver,,db_max,0.0007376880696909893
+p2_own_vs_supplied,1.0,180.0,0.0125,own-solver,,dV_max,3.7690390559674825e-06
+p2_own_vs_supplied,1.0,180.0,0.0125,own-solver,,db_max,0.0007376880696909893
+p2_own_vs_supplied,2.0,360.0,0.0,own-solver,,dV_max,6.686440787717629e-06
+p2_own_vs_supplied,2.0,360.0,0.0,own-solver,,db_max,0.0010883454931445158
+p2_own_vs_supplied,3.0,360.0,0.0125,own-solver,,dV_max,5.9758494987960376e-06
+p2_own_vs_supplied,3.0,360.0,0.0125,own-solver,,db_max,0.0010883454931445158
+p2_martingale,0.0,180.0,0.0,,,z_(mean-theory)/se,0.11732009746888669
+p2_martingale,0.0,180.0,0.0,,,diff_dollars,0.014318252196858339
+p2_martingale,1.0,180.0,0.0125,,,z_(mean-theory)/se,0.6235766858715851
+p2_martingale,1.0,180.0,0.0125,,,diff_dollars,0.07339581159003217
+p2_martingale,2.0,360.0,0.0,,,z_(mean-theory)/se,1.9648976586941798
+p2_martingale,2.0,360.0,0.0,,,diff_dollars,0.2404937601454975
+p2_martingale,3.0,360.0,0.0125,,,z_(mean-theory)/se,0.2257258938036812
+p2_martingale,3.0,360.0,0.0125,,,diff_dollars,0.026601599804976672
 p3_ls_diagnostics,0.0,180.0,0.0,LS,,fallback_count,0
-p3_ls_diagnostics,0.0,180.0,0.0,LS,,multi_crossing_count,179
+p3_ls_diagnostics,0.0,180.0,0.0,LS,,multi_crossing_count,176
 p3_ls_diagnostics,0.0,180.0,0.0,LS,,capped_count,0
 p3_ls_diagnostics,0.0,180.0,0.0,LS,,replay_max_abs_diff,0.0
 p3_ls_diagnostics,1.0,180.0,0.0125,LS,,fallback_count,0
-p3_ls_diagnostics,1.0,180.0,0.0125,LS,,multi_crossing_count,142
-p3_ls_diagnostics,1.0,180.0,0.0125,LS,,capped_count,85
+p3_ls_diagnostics,1.0,180.0,0.0125,LS,,multi_crossing_count,138
+p3_ls_diagnostics,1.0,180.0,0.0125,LS,,capped_count,83
 p3_ls_diagnostics,1.0,180.0,0.0125,LS,,replay_max_abs_diff,0.0
 p3_ls_diagnostics,2.0,360.0,0.0,LS,,fallback_count,0
 p3_ls_diagnostics,2.0,360.0,0.0,LS,,multi_crossing_count,360
 p3_ls_diagnostics,2.0,360.0,0.0,LS,,capped_count,0
 p3_ls_diagnostics,2.0,360.0,0.0,LS,,replay_max_abs_diff,0.0
 p3_ls_diagnostics,3.0,360.0,0.0125,LS,,fallback_count,0
-p3_ls_diagnostics,3.0,360.0,0.0125,LS,,multi_crossing_count,264
-p3_ls_diagnostics,3.0,360.0,0.0125,LS,,capped_count,149
+p3_ls_diagnostics,3.0,360.0,0.0125,LS,,multi_crossing_count,273
+p3_ls_diagnostics,3.0,360.0,0.0125,LS,,capped_count,154
 p3_ls_diagnostics,3.0,360.0,0.0125,LS,,replay_max_abs_diff,0.0
-reference,0.0,180.0,0.0,ref,,source,own-solver
-reference,1.0,180.0,0.0125,ref,,source,own-solver
-reference,2.0,360.0,0.0,ref,,source,own-solver
-reference,3.0,360.0,0.0125,ref,,source,own-solver
-p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt0,58.50849736307489
-p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt400,58.5294535002886
-p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt800,58.5235218571282
-p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt1200,58.473927148888706
-p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt1600,58.52613571656651
-p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt2000,58.52089605164561
-p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt2400,58.53074256722506
-p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt0,58.40860868978373
-p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt400,58.36043848053535
-p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt800,58.38561198681897
-p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt1200,58.39039173231426
-p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt1600,58.39149793696428
-p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt2000,58.391834302622485
-p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt2400,58.36679636662532
-p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt0,59.31085343420058
-p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt400,59.338199804150065
-p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt800,59.35273736786526
-p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt1200,59.346778985097224
-p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt1600,59.3622402015301
-p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt2000,59.361130265960256
-p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt2400,59.3656037651414
-p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt0,60.54850993884898
-p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt400,60.51129712381909
-p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt800,60.51378239930173
-p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt1200,60.53268659489298
-p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt1600,60.527518515799095
-p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt2000,60.501379618560804
-p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt2400,60.506463998342824
-p4_selection,0.0,180.0,0.0,NN,,selected_checkpoint,2400.0
-p4_selection,0.0,180.0,0.0,NN,,val_mean_initial,58.50849736307489
-p4_selection,0.0,180.0,0.0,NN,,val_mean_selected,58.53074256722506
-timing,0.0,180.0,0.0,NN,,time_supervised_s,12.623436343000037
-timing,0.0,180.0,0.0,NN,,time_banks_s,0.1978247109999529
-timing,0.0,180.0,0.0,NN,,time_payoff_s,11.611254404000022
-timing,0.0,180.0,0.0,NN,,time_validation_s,0.020614368999986254
-p4_selection,1.0,180.0,0.0125,NN,,selected_checkpoint,0.0
-p4_selection,1.0,180.0,0.0125,NN,,val_mean_initial,58.40860868978373
-p4_selection,1.0,180.0,0.0125,NN,,val_mean_selected,58.40860868978373
-timing,1.0,180.0,0.0125,NN,,time_supervised_s,2.3884189580000452
-timing,1.0,180.0,0.0125,NN,,time_banks_s,0.1444427659999974
-timing,1.0,180.0,0.0125,NN,,time_payoff_s,15.006662608
-timing,1.0,180.0,0.0125,NN,,time_validation_s,0.02255709400003525
-p4_selection,2.0,360.0,0.0,NN,,selected_checkpoint,2400.0
-p4_selection,2.0,360.0,0.0,NN,,val_mean_initial,59.31085343420058
-p4_selection,2.0,360.0,0.0,NN,,val_mean_selected,59.3656037651414
-timing,2.0,360.0,0.0,NN,,time_supervised_s,1.2093623609999895
-timing,2.0,360.0,0.0,NN,,time_banks_s,0.2870260020000046
-timing,2.0,360.0,0.0,NN,,time_payoff_s,16.83736029900001
-timing,2.0,360.0,0.0,NN,,time_validation_s,0.03943887600001972
-p4_selection,3.0,360.0,0.0125,NN,,selected_checkpoint,0.0
-p4_selection,3.0,360.0,0.0125,NN,,val_mean_initial,60.54850993884898
-p4_selection,3.0,360.0,0.0125,NN,,val_mean_selected,60.54850993884898
-timing,3.0,360.0,0.0125,NN,,time_supervised_s,2.4983166929999925
-timing,3.0,360.0,0.0125,NN,,time_banks_s,0.24980798499996126
-timing,3.0,360.0,0.0125,NN,,time_payoff_s,20.663075632000073
-timing,3.0,360.0,0.0125,NN,,time_validation_s,0.05022160200007875
-timing,,,,,,evaluation_3_policies_s,6.799666931000047
-p5_prices,0.0,180.0,0.0,LS,60.0,mean,40.00000000000001
-p5_prices,0.0,180.0,0.0,LS,60.0,se,3.1776754930703254e-17
-p5_prices,0.0,180.0,0.0,LS,60.0,ci_lo,40.00000000000001
-p5_prices,0.0,180.0,0.0,LS,60.0,ci_hi,40.00000000000001
-p5_prices,0.0,180.0,0.0,LS,60.0,ref_value,39.99999808710686
+reference,0.0,180.0,0.0,ref,,source,supplied
+reference,1.0,180.0,0.0125,ref,,source,supplied
+reference,2.0,360.0,0.0,ref,,source,supplied
+reference,3.0,360.0,0.0125,ref,,source,supplied
+p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt0,59.155065299065114
+p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt400,59.159691014040504
+p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt800,59.150616972793756
+p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt1200,59.15249597166651
+p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt1600,59.144980058725054
+p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt2000,59.16262239624529
+p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt2400,59.145383037883924
+p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt0,58.98829686634017
+p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt400,58.995422240943235
+p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt800,59.013679950919766
+p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt1200,59.012267692784526
+p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt1600,58.99291083577806
+p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt2000,59.01555414075019
+p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt2400,59.00378314421448
+p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt0,59.392109385288634
+p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt400,59.37612587788148
+p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt800,59.36956965885119
+p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt1200,59.39452955733347
+p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt1600,59.376188048381366
+p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt2000,59.37114265467839
+p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt2400,59.37837017334749
+p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt0,60.53182746771313
+p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt400,60.548674726375204
+p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt800,60.54632620009424
+p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt1200,60.54756307569234
+p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt1600,60.54841328571081
+p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt2000,60.54392689072536
+p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt2400,60.55503178811216
+p4_selection,0.0,180.0,0.0,NN,,selected_checkpoint,2000.0
+p4_selection,0.0,180.0,0.0,NN,,val_mean_initial,59.155065299065114
+p4_selection,0.0,180.0,0.0,NN,,val_mean_selected,59.16262239624529
+timing,0.0,180.0,0.0,NN,,time_supervised_s,1.6161129719999963
+timing,0.0,180.0,0.0,NN,,time_banks_s,0.13763775399996803
+timing,0.0,180.0,0.0,NN,,time_payoff_s,7.369194847000017
+timing,0.0,180.0,0.0,NN,,time_validation_s,0.016756695999958993
+p4_selection,1.0,180.0,0.0125,NN,,selected_checkpoint,2000.0
+p4_selection,1.0,180.0,0.0125,NN,,val_mean_initial,58.98829686634017
+p4_selection,1.0,180.0,0.0125,NN,,val_mean_selected,59.01555414075019
+timing,1.0,180.0,0.0125,NN,,time_supervised_s,1.2242917400000124
+timing,1.0,180.0,0.0125,NN,,time_banks_s,0.12282797199998186
+timing,1.0,180.0,0.0125,NN,,time_payoff_s,9.339962695999986
+timing,1.0,180.0,0.0125,NN,,time_validation_s,0.01698163300000033
+p4_selection,2.0,360.0,0.0,NN,,selected_checkpoint,1200.0
+p4_selection,2.0,360.0,0.0,NN,,val_mean_initial,59.392109385288634
+p4_selection,2.0,360.0,0.0,NN,,val_mean_selected,59.39452955733347
+timing,2.0,360.0,0.0,NN,,time_supervised_s,0.6316892059999759
+timing,2.0,360.0,0.0,NN,,time_banks_s,0.24570751300001348
+timing,2.0,360.0,0.0,NN,,time_payoff_s,11.37317242499995
+timing,2.0,360.0,0.0,NN,,time_validation_s,0.030033500999991247
+p4_selection,3.0,360.0,0.0125,NN,,selected_checkpoint,2400.0
+p4_selection,3.0,360.0,0.0125,NN,,val_mean_initial,60.53182746771313
+p4_selection,3.0,360.0,0.0125,NN,,val_mean_selected,60.55503178811216
+timing,3.0,360.0,0.0125,NN,,time_supervised_s,1.4534662070000195
+timing,3.0,360.0,0.0125,NN,,time_banks_s,0.2179606639999747
+timing,3.0,360.0,0.0125,NN,,time_payoff_s,12.602014581999981
+timing,3.0,360.0,0.0125,NN,,time_validation_s,0.03183960199999092
+timing,,,,,,evaluation_3_policies_s,5.202540694999982
+p5_prices,0.0,180.0,0.0,LS,60.0,mean,40.0
+p5_prices,0.0,180.0,0.0,LS,60.0,se,0.0
+p5_prices,0.0,180.0,0.0,LS,60.0,ci_lo,40.0
+p5_prices,0.0,180.0,0.0,LS,60.0,ci_hi,40.0
+p5_prices,0.0,180.0,0.0,LS,60.0,ref_value,40.0
 p5_prices,0.0,180.0,0.0,LS,60.0,z_vs_ref,
-p5_prices,0.0,180.0,0.0,NN,60.0,mean,39.130169834504194
-p5_prices,0.0,180.0,0.0,NN,60.0,se,0.03932294715581088
-p5_prices,0.0,180.0,0.0,NN,60.0,ci_lo,39.0530968580788
-p5_prices,0.0,180.0,0.0,NN,60.0,ci_hi,39.207242810929586
-p5_prices,0.0,180.0,0.0,NN,60.0,ref_value,39.99999808710686
-p5_prices,0.0,180.0,0.0,NN,60.0,z_vs_ref,-22.12011854442422
-p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,mean,40.00000000000001
-p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,se,3.1776754930703254e-17
-p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,ci_lo,40.00000000000001
-p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,ci_hi,40.00000000000001
-p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,ref_value,39.99999808710686
+p5_prices,0.0,180.0,0.0,NN,60.0,mean,40.0
+p5_prices,0.0,180.0,0.0,NN,60.0,se,0.0
+p5_prices,0.0,180.0,0.0,NN,60.0,ci_lo,40.0
+p5_prices,0.0,180.0,0.0,NN,60.0,ci_hi,40.0
+p5_prices,0.0,180.0,0.0,NN,60.0,ref_value,40.0
+p5_prices,0.0,180.0,0.0,NN,60.0,z_vs_ref,
+p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,mean,40.0
+p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,se,0.0
+p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,ci_lo,40.0
+p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,ci_hi,40.0
+p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,ref_value,40.0
 p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,z_vs_ref,
-p5_prices,0.0,180.0,0.0,LS,80.0,mean,20.652572539907382
-p5_prices,0.0,180.0,0.0,LS,80.0,se,0.056087113543086445
-p5_prices,0.0,180.0,0.0,LS,80.0,ci_lo,20.542641797362933
-p5_prices,0.0,180.0,0.0,LS,80.0,ci_hi,20.76250328245183
-p5_prices,0.0,180.0,0.0,LS,80.0,ref_value,20.868801074662816
-p5_prices,0.0,180.0,0.0,LS,80.0,z_vs_ref,-3.8552266482625424
-p5_prices,0.0,180.0,0.0,NN,80.0,mean,20.583641203384946
-p5_prices,0.0,180.0,0.0,NN,80.0,se,0.05624309587133541
-p5_prices,0.0,180.0,0.0,NN,80.0,ci_lo,20.47340473547713
-p5_prices,0.0,180.0,0.0,NN,80.0,ci_hi,20.693877671292764
-p5_prices,0.0,180.0,0.0,NN,80.0,ref_value,20.868801074662816
-p5_prices,0.0,180.0,0.0,NN,80.0,z_vs_ref,-5.070131130943003
-p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,mean,20.843424246715774
-p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,se,0.044744065790320864
-p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,ci_lo,20.755725877766746
-p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,ci_hi,20.9311226156648
-p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,ref_value,20.868801074662816
-p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,z_vs_ref,-0.5671551634570428
-p5_prices,0.0,180.0,0.0,LS,100.0,mean,8.648360668052176
-p5_prices,0.0,180.0,0.0,LS,100.0,se,0.04971049853944782
-p5_prices,0.0,180.0,0.0,LS,100.0,ci_lo,8.550928090914859
-p5_prices,0.0,180.0,0.0,LS,100.0,ci_hi,8.745793245189493
-p5_prices,0.0,180.0,0.0,LS,100.0,ref_value,8.807848281690578
-p5_prices,0.0,180.0,0.0,LS,100.0,z_vs_ref,-3.208328589017089
-p5_prices,0.0,180.0,0.0,NN,100.0,mean,8.75978589885873
-p5_prices,0.0,180.0,0.0,NN,100.0,se,0.04642947406304139
-p5_prices,0.0,180.0,0.0,NN,100.0,ci_lo,8.668784129695169
-p5_prices,0.0,180.0,0.0,NN,100.0,ci_hi,8.850787668022292
-p5_prices,0.0,180.0,0.0,NN,100.0,ref_value,8.807848281690578
-p5_prices,0.0,180.0,0.0,NN,100.0,z_vs_ref,-1.0351696589668298
-p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,mean,8.773275916538966
-p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,se,0.044759323847837595
-p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,ci_lo,8.685547641797204
-p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,ci_hi,8.861004191280728
-p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,ref_value,8.807848281690578
-p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,z_vs_ref,-0.7724058850652863
-p5_prices,1.0,180.0,0.0125,LS,60.0,mean,40.00000000000001
-p5_prices,1.0,180.0,0.0125,LS,60.0,se,3.1776754930703254e-17
-p5_prices,1.0,180.0,0.0125,LS,60.0,ci_lo,40.00000000000001
-p5_prices,1.0,180.0,0.0125,LS,60.0,ci_hi,40.00000000000001
-p5_prices,1.0,180.0,0.0125,LS,60.0,ref_value,39.99999808710686
+p5_prices,0.0,180.0,0.0,LS,80.0,mean,20.661120170945498
+p5_prices,0.0,180.0,0.0,LS,80.0,se,0.055752688767558685
+p5_prices,0.0,180.0,0.0,LS,80.0,ci_lo,20.551844900961083
+p5_prices,0.0,180.0,0.0,LS,80.0,ci_hi,20.770395440929914
+p5_prices,0.0,180.0,0.0,LS,80.0,ref_value,20.86879261034399
+p5_prices,0.0,180.0,0.0,LS,80.0,z_vs_ref,-3.7248865299449636
+p5_prices,0.0,180.0,0.0,NN,80.0,mean,20.632064017166947
+p5_prices,0.0,180.0,0.0,NN,80.0,se,0.056299541243427335
+p5_prices,0.0,180.0,0.0,NN,80.0,ci_lo,20.52171691632983
+p5_prices,0.0,180.0,0.0,NN,80.0,ci_hi,20.742411118004064
+p5_prices,0.0,180.0,0.0,NN,80.0,ref_value,20.86879261034399
+p5_prices,0.0,180.0,0.0,NN,80.0,z_vs_ref,-4.2048050117048055
+p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,mean,20.84384576487942
+p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,se,0.04474410588914827
+p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,ci_lo,20.756147317336687
+p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,ci_hi,20.93154421242215
+p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,ref_value,20.86879261034399
+p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,z_vs_ref,-0.5575448423615335
+p5_prices,0.0,180.0,0.0,LS,100.0,mean,8.639783160050102
+p5_prices,0.0,180.0,0.0,LS,100.0,se,0.04998648628976873
+p5_prices,0.0,180.0,0.0,LS,100.0,ci_lo,8.541809646922156
+p5_prices,0.0,180.0,0.0,LS,100.0,ci_hi,8.73775667317805
+p5_prices,0.0,180.0,0.0,LS,100.0,ref_value,8.80784061168281
+p5_prices,0.0,180.0,0.0,LS,100.0,z_vs_ref,-3.3620577101276563
+p5_prices,0.0,180.0,0.0,NN,100.0,mean,8.623238832284505
+p5_prices,0.0,180.0,0.0,NN,100.0,se,0.050127171695555625
+p5_prices,0.0,180.0,0.0,NN,100.0,ci_lo,8.524989575761216
+p5_prices,0.0,180.0,0.0,NN,100.0,ci_hi,8.721488088807794
+p5_prices,0.0,180.0,0.0,NN,100.0,ref_value,8.80784061168281
+p5_prices,0.0,180.0,0.0,NN,100.0,z_vs_ref,-3.682668962842601
+p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,mean,8.773429215286113
+p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,se,0.04475981102136124
+p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,ci_lo,8.685699985684245
+p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,ci_hi,8.86115844488798
+p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,ref_value,8.80784061168281
+p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,z_vs_ref,-0.7688011993677691
+p5_prices,1.0,180.0,0.0125,LS,60.0,mean,40.0
+p5_prices,1.0,180.0,0.0125,LS,60.0,se,0.0
+p5_prices,1.0,180.0,0.0125,LS,60.0,ci_lo,40.0
+p5_prices,1.0,180.0,0.0125,LS,60.0,ci_hi,40.0
+p5_prices,1.0,180.0,0.0125,LS,60.0,ref_value,40.0
 p5_prices,1.0,180.0,0.0125,LS,60.0,z_vs_ref,
-p5_prices,1.0,180.0,0.0125,NN,60.0,mean,39.97102409715621
-p5_prices,1.0,180.0,0.0125,NN,60.0,se,0.009663178856738966
-p5_prices,1.0,180.0,0.0125,NN,60.0,ci_lo,39.952084266597005
-p5_prices,1.0,180.0,0.0125,NN,60.0,ci_hi,39.989963927715415
-p5_prices,1.0,180.0,0.0125,NN,60.0,ref_value,39.99999808710686
-p5_prices,1.0,180.0,0.0125,NN,60.0,z_vs_ref,-2.9983911485239645
-p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,mean,40.00000000000001
-p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,se,3.1776754930703254e-17
-p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,ci_lo,40.00000000000001
-p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,ci_hi,40.00000000000001
-p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,ref_value,39.99999808710686
+p5_prices,1.0,180.0,0.0125,NN,60.0,mean,40.0
+p5_prices,1.0,180.0,0.0125,NN,60.0,se,0.0
+p5_prices,1.0,180.0,0.0125,NN,60.0,ci_lo,40.0
+p5_prices,1.0,180.0,0.0125,NN,60.0,ci_hi,40.0
+p5_prices,1.0,180.0,0.0125,NN,60.0,ref_value,40.0
+p5_prices,1.0,180.0,0.0125,NN,60.0,z_vs_ref,
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,mean,40.0
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,se,0.0
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,ci_lo,40.0
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,ci_hi,40.0
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,ref_value,40.0
 p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,z_vs_ref,
-p5_prices,1.0,180.0,0.0125,LS,80.0,mean,21.99713094681845
-p5_prices,1.0,180.0,0.0125,LS,80.0,se,0.0630192370836138
-p5_prices,1.0,180.0,0.0125,LS,80.0,ci_lo,21.873613242134567
-p5_prices,1.0,180.0,0.0125,LS,80.0,ci_hi,22.120648651502336
-p5_prices,1.0,180.0,0.0125,LS,80.0,ref_value,22.109546800048825
-p5_prices,1.0,180.0,0.0125,LS,80.0,z_vs_ref,-1.7838339280626438
-p5_prices,1.0,180.0,0.0125,NN,80.0,mean,22.00955886795517
-p5_prices,1.0,180.0,0.0125,NN,80.0,se,0.06267043962110903
-p5_prices,1.0,180.0,0.0125,NN,80.0,ci_lo,21.886724806297796
-p5_prices,1.0,180.0,0.0125,NN,80.0,ci_hi,22.132392929612546
-p5_prices,1.0,180.0,0.0125,NN,80.0,ref_value,22.109546800048825
-p5_prices,1.0,180.0,0.0125,NN,80.0,z_vs_ref,-1.5954560507020246
-p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,mean,22.0411697899575
+p5_prices,1.0,180.0,0.0125,LS,80.0,mean,22.016996231811692
+p5_prices,1.0,180.0,0.0125,LS,80.0,se,0.06174555902170179
+p5_prices,1.0,180.0,0.0125,LS,80.0,ci_lo,21.895974936129157
+p5_prices,1.0,180.0,0.0125,LS,80.0,ci_hi,22.138017527494227
+p5_prices,1.0,180.0,0.0125,LS,80.0,ref_value,22.109550519658736
+p5_prices,1.0,180.0,0.0125,LS,80.0,z_vs_ref,-1.4989626673314855
+p5_prices,1.0,180.0,0.0125,NN,80.0,mean,22.028646615511718
+p5_prices,1.0,180.0,0.0125,NN,80.0,se,0.05791027933421382
+p5_prices,1.0,180.0,0.0125,NN,80.0,ci_lo,21.915142468016658
+p5_prices,1.0,180.0,0.0125,NN,80.0,ci_hi,22.14215076300678
+p5_prices,1.0,180.0,0.0125,NN,80.0,ref_value,22.109550519658736
+p5_prices,1.0,180.0,0.0125,NN,80.0,z_vs_ref,-1.397056016257536
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,mean,22.041169789957436
 p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,se,0.059428681944716386
-p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,ci_lo,21.924689573345855
-p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,ci_hi,22.157650006569146
-p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,ref_value,22.109546800048825
-p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,z_vs_ref,-1.150572549378309
-p5_prices,1.0,180.0,0.0125,LS,100.0,mean,10.028705707402406
-p5_prices,1.0,180.0,0.0125,LS,100.0,se,0.05459419964062842
-p5_prices,1.0,180.0,0.0125,LS,100.0,ci_lo,9.921701076106773
-p5_prices,1.0,180.0,0.0125,LS,100.0,ci_hi,10.135710338698038
-p5_prices,1.0,180.0,0.0125,LS,100.0,ref_value,10.12640145873042
-p5_prices,1.0,180.0,0.0125,LS,100.0,z_vs_ref,-1.7894895789498972
-p5_prices,1.0,180.0,0.0125,NN,100.0,mean,10.033441533482476
-p5_prices,1.0,180.0,0.0125,NN,100.0,se,0.054537622125276866
-p5_prices,1.0,180.0,0.0125,NN,100.0,ci_lo,9.926547794116933
-p5_prices,1.0,180.0,0.0125,NN,100.0,ci_hi,10.140335272848018
-p5_prices,1.0,180.0,0.0125,NN,100.0,ref_value,10.12640145873042
-p5_prices,1.0,180.0,0.0125,NN,100.0,z_vs_ref,-1.7045100542595866
-p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,mean,10.086192739857738
-p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,se,0.052716572683791374
-p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,ci_lo,9.982868257397508
-p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,ci_hi,10.189517222317969
-p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,ref_value,10.12640145873042
-p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,z_vs_ref,-0.7627339340488829
-p5_prices,2.0,360.0,0.0,LS,60.0,mean,40.00000000000001
-p5_prices,2.0,360.0,0.0,LS,60.0,se,3.1776754930703254e-17
-p5_prices,2.0,360.0,0.0,LS,60.0,ci_lo,40.00000000000001
-p5_prices,2.0,360.0,0.0,LS,60.0,ci_hi,40.00000000000001
-p5_prices,2.0,360.0,0.0,LS,60.0,ref_value,39.99999808710686
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,ci_lo,21.92468957334579
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,ci_hi,22.15765000656908
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,ref_value,22.109550519658736
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,z_vs_ref,-1.150635138852835
+p5_prices,1.0,180.0,0.0125,LS,100.0,mean,10.042579765864163
+p5_prices,1.0,180.0,0.0125,LS,100.0,se,0.05445908800694334
+p5_prices,1.0,180.0,0.0125,LS,100.0,ci_lo,9.935839953370554
+p5_prices,1.0,180.0,0.0125,LS,100.0,ci_hi,10.149319578357773
+p5_prices,1.0,180.0,0.0125,LS,100.0,ref_value,10.126405227769476
+p5_prices,1.0,180.0,0.0125,LS,100.0,z_vs_ref,-1.5392373426199444
+p5_prices,1.0,180.0,0.0125,NN,100.0,mean,10.047684100053734
+p5_prices,1.0,180.0,0.0125,NN,100.0,se,0.052800746912308384
+p5_prices,1.0,180.0,0.0125,NN,100.0,ci_lo,9.94419463610561
+p5_prices,1.0,180.0,0.0125,NN,100.0,ci_hi,10.151173564001859
+p5_prices,1.0,180.0,0.0125,NN,100.0,ref_value,10.126405227769476
+p5_prices,1.0,180.0,0.0125,NN,100.0,z_vs_ref,-1.490909358658923
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,mean,10.0861807945279
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,se,0.05271617656449018
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,ci_lo,9.982857088461499
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,ci_hi,10.189504500594301
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,ref_value,10.126405227769476
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,z_vs_ref,-0.7630377592420376
+p5_prices,2.0,360.0,0.0,LS,60.0,mean,40.0
+p5_prices,2.0,360.0,0.0,LS,60.0,se,0.0
+p5_prices,2.0,360.0,0.0,LS,60.0,ci_lo,40.0
+p5_prices,2.0,360.0,0.0,LS,60.0,ci_hi,40.0
+p5_prices,2.0,360.0,0.0,LS,60.0,ref_value,40.0
 p5_prices,2.0,360.0,0.0,LS,60.0,z_vs_ref,
-p5_prices,2.0,360.0,0.0,NN,60.0,mean,40.00000000000001
-p5_prices,2.0,360.0,0.0,NN,60.0,se,3.1776754930703254e-17
-p5_prices,2.0,360.0,0.0,NN,60.0,ci_lo,40.00000000000001
-p5_prices,2.0,360.0,0.0,NN,60.0,ci_hi,40.00000000000001
-p5_prices,2.0,360.0,0.0,NN,60.0,ref_value,39.99999808710686
+p5_prices,2.0,360.0,0.0,NN,60.0,mean,40.0
+p5_prices,2.0,360.0,0.0,NN,60.0,se,0.0
+p5_prices,2.0,360.0,0.0,NN,60.0,ci_lo,40.0
+p5_prices,2.0,360.0,0.0,NN,60.0,ci_hi,40.0
+p5_prices,2.0,360.0,0.0,NN,60.0,ref_value,40.0
 p5_prices,2.0,360.0,0.0,NN,60.0,z_vs_ref,
-p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,mean,40.00000000000001
-p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,se,3.1776754930703254e-17
-p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,ci_lo,40.00000000000001
-p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,ci_hi,40.00000000000001
-p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,ref_value,39.99999808710686
+p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,mean,40.0
+p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,se,0.0
+p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,ci_lo,40.0
+p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,ci_hi,40.0
+p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,ref_value,40.0
 p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,z_vs_ref,
-p5_prices,2.0,360.0,0.0,LS,80.0,mean,20.660365503883018
-p5_prices,2.0,360.0,0.0,LS,80.0,se,0.05362862436701869
-p5_prices,2.0,360.0,0.0,LS,80.0,ci_lo,20.55525340012366
-p5_prices,2.0,360.0,0.0,LS,80.0,ci_hi,20.765477607642374
-p5_prices,2.0,360.0,0.0,LS,80.0,ref_value,20.87099618699714
-p5_prices,2.0,360.0,0.0,LS,80.0,z_vs_ref,-3.927579452208707
-p5_prices,2.0,360.0,0.0,NN,80.0,mean,20.821539014504125
-p5_prices,2.0,360.0,0.0,NN,80.0,se,0.04247972217584675
-p5_prices,2.0,360.0,0.0,NN,80.0,ci_lo,20.738278759039467
-p5_prices,2.0,360.0,0.0,NN,80.0,ci_hi,20.904799269968784
-p5_prices,2.0,360.0,0.0,NN,80.0,ref_value,20.87099618699714
-p5_prices,2.0,360.0,0.0,NN,80.0,z_vs_ref,-1.1642536711582936
-p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,mean,20.849141524299743
-p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,se,0.04468686894448495
-p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,ci_lo,20.761555261168553
-p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,ci_hi,20.936727787430932
-p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,ref_value,20.87099618699714
-p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,z_vs_ref,-0.48906229533662543
-p5_prices,2.0,360.0,0.0,LS,100.0,mean,8.611665564953327
-p5_prices,2.0,360.0,0.0,LS,100.0,se,0.04921095172680803
-p5_prices,2.0,360.0,0.0,LS,100.0,ci_lo,8.515212099568783
-p5_prices,2.0,360.0,0.0,LS,100.0,ci_hi,8.70811903033787
-p5_prices,2.0,360.0,0.0,LS,100.0,ref_value,8.809147435127905
-p5_prices,2.0,360.0,0.0,LS,100.0,z_vs_ref,-4.0129658794426
-p5_prices,2.0,360.0,0.0,NN,100.0,mean,8.6884955500598
-p5_prices,2.0,360.0,0.0,NN,100.0,se,0.04568602414298945
-p5_prices,2.0,360.0,0.0,NN,100.0,ci_lo,8.59895094273954
-p5_prices,2.0,360.0,0.0,NN,100.0,ci_hi,8.77804015738006
-p5_prices,2.0,360.0,0.0,NN,100.0,ref_value,8.809147435127905
-p5_prices,2.0,360.0,0.0,NN,100.0,z_vs_ref,-2.6408926434588587
-p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,mean,8.714538430505707
-p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,se,0.04473117842053164
-p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,ci_lo,8.626865320801464
-p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,ci_hi,8.80221154020995
-p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,ref_value,8.809147435127905
-p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,z_vs_ref,-2.1150572813608752
-p5_prices,3.0,360.0,0.0125,LS,60.0,mean,40.00000000000001
-p5_prices,3.0,360.0,0.0125,LS,60.0,se,3.1776754930703254e-17
-p5_prices,3.0,360.0,0.0125,LS,60.0,ci_lo,40.00000000000001
-p5_prices,3.0,360.0,0.0125,LS,60.0,ci_hi,40.00000000000001
-p5_prices,3.0,360.0,0.0125,LS,60.0,ref_value,39.99999808710686
+p5_prices,2.0,360.0,0.0,LS,80.0,mean,20.600948364858954
+p5_prices,2.0,360.0,0.0,LS,80.0,se,0.05543849629761558
+p5_prices,2.0,360.0,0.0,LS,80.0,ci_lo,20.49228891211563
+p5_prices,2.0,360.0,0.0,LS,80.0,ci_hi,20.70960781760228
+p5_prices,2.0,360.0,0.0,LS,80.0,ref_value,20.87098950055635
+p5_prices,2.0,360.0,0.0,LS,80.0,z_vs_ref,-4.871003972541222
+p5_prices,2.0,360.0,0.0,NN,80.0,mean,20.633082223636443
+p5_prices,2.0,360.0,0.0,NN,80.0,se,0.054690639656286816
+p5_prices,2.0,360.0,0.0,NN,80.0,ci_lo,20.52588856991012
+p5_prices,2.0,360.0,0.0,NN,80.0,ci_hi,20.740275877362766
+p5_prices,2.0,360.0,0.0,NN,80.0,ref_value,20.87098950055635
+p5_prices,2.0,360.0,0.0,NN,80.0,z_vs_ref,-4.350054751874914
+p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,mean,20.849497749461122
+p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,se,0.04468591310579117
+p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,ci_lo,20.76191335977377
+p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,ci_hi,20.937082139148472
+p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,ref_value,20.87098950055635
+p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,z_vs_ref,-0.48095136926819215
+p5_prices,2.0,360.0,0.0,LS,100.0,mean,8.585658443965634
+p5_prices,2.0,360.0,0.0,LS,100.0,se,0.04979280994593799
+p5_prices,2.0,360.0,0.0,LS,100.0,ci_lo,8.488064536471596
+p5_prices,2.0,360.0,0.0,LS,100.0,ci_hi,8.683252351459673
+p5_prices,2.0,360.0,0.0,LS,100.0,ref_value,8.80914257676589
+p5_prices,2.0,360.0,0.0,LS,100.0,z_vs_ref,-4.488281200496633
+p5_prices,2.0,360.0,0.0,NN,100.0,mean,8.593434849306707
+p5_prices,2.0,360.0,0.0,NN,100.0,se,0.04957393065625019
+p5_prices,2.0,360.0,0.0,NN,100.0,ci_lo,8.496269945220456
+p5_prices,2.0,360.0,0.0,NN,100.0,ci_hi,8.690599753392958
+p5_prices,2.0,360.0,0.0,NN,100.0,ref_value,8.80914257676589
+p5_prices,2.0,360.0,0.0,NN,100.0,z_vs_ref,-4.351233089724483
+p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,mean,8.714510111587215
+p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,se,0.04473106254307433
+p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,ci_lo,8.626837229002788
+p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,ci_hi,8.802182994171641
+p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,ref_value,8.80914257676589
+p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,z_vs_ref,-2.115587240690906
+p5_prices,3.0,360.0,0.0125,LS,60.0,mean,40.0
+p5_prices,3.0,360.0,0.0125,LS,60.0,se,0.0
+p5_prices,3.0,360.0,0.0125,LS,60.0,ci_lo,40.0
+p5_prices,3.0,360.0,0.0125,LS,60.0,ci_hi,40.0
+p5_prices,3.0,360.0,0.0125,LS,60.0,ref_value,40.0
 p5_prices,3.0,360.0,0.0125,LS,60.0,z_vs_ref,
-p5_prices,3.0,360.0,0.0125,NN,60.0,mean,40.00000000000001
-p5_prices,3.0,360.0,0.0125,NN,60.0,se,3.1776754930703254e-17
-p5_prices,3.0,360.0,0.0125,NN,60.0,ci_lo,40.00000000000001
-p5_prices,3.0,360.0,0.0125,NN,60.0,ci_hi,40.00000000000001
-p5_prices,3.0,360.0,0.0125,NN,60.0,ref_value,39.99999808710686
-p5_prices,3.0,360.0,0.0125,NN,60.0,z_vs_ref,
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,mean,40.00000000000001
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,se,3.1776754930703254e-17
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,ci_lo,40.00000000000001
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,ci_hi,40.00000000000001
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,ref_value,39.99999808710686
+p5_prices,3.0,360.0,0.0125,NN,60.0,mean,39.954964249564206
+p5_prices,3.0,360.0,0.0125,NN,60.0,se,0.021021101416420006
+p5_prices,3.0,360.0,0.0125,NN,60.0,ci_lo,39.91376289078802
+p5_prices,3.0,360.0,0.0125,NN,60.0,ci_hi,39.99616560834039
+p5_prices,3.0,360.0,0.0125,NN,60.0,ref_value,40.0
+p5_prices,3.0,360.0,0.0125,NN,60.0,z_vs_ref,-2.142406791330903
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,mean,40.0
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,se,0.0
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,ci_lo,40.0
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,ci_hi,40.0
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,ref_value,40.0
 p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,z_vs_ref,
-p5_prices,3.0,360.0,0.0125,LS,80.0,mean,22.06972798810844
-p5_prices,3.0,360.0,0.0125,LS,80.0,se,0.06268570694720546
-p5_prices,3.0,360.0,0.0125,LS,80.0,ci_lo,21.946864002491917
-p5_prices,3.0,360.0,0.0125,LS,80.0,ci_hi,22.192591973724962
-p5_prices,3.0,360.0,0.0125,LS,80.0,ref_value,22.110202935072778
-p5_prices,3.0,360.0,0.0125,LS,80.0,z_vs_ref,-0.6456806333607459
-p5_prices,3.0,360.0,0.0125,NN,80.0,mean,22.065152525865397
-p5_prices,3.0,360.0,0.0125,NN,80.0,se,0.06248689241167412
-p5_prices,3.0,360.0,0.0125,NN,80.0,ci_lo,21.942678216738514
-p5_prices,3.0,360.0,0.0125,NN,80.0,ci_hi,22.18762683499228
-p5_prices,3.0,360.0,0.0125,NN,80.0,ref_value,22.110202935072778
-p5_prices,3.0,360.0,0.0125,NN,80.0,z_vs_ref,-0.7209577475957843
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,mean,22.109861887676665
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,se,0.05967786207496678
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,ci_lo,21.99289327800973
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,ci_hi,22.2268304973436
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,ref_value,22.110202935072778
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,z_vs_ref,-0.005714805863589655
-p5_prices,3.0,360.0,0.0125,LS,100.0,mean,10.073331538914644
-p5_prices,3.0,360.0,0.0125,LS,100.0,se,0.055008900035910004
-p5_prices,3.0,360.0,0.0125,LS,100.0,ci_lo,9.965514094844261
-p5_prices,3.0,360.0,0.0125,LS,100.0,ci_hi,10.181148982985027
-p5_prices,3.0,360.0,0.0125,LS,100.0,ref_value,10.126959105954446
-p5_prices,3.0,360.0,0.0125,LS,100.0,z_vs_ref,-0.9748889180622418
-p5_prices,3.0,360.0,0.0125,NN,100.0,mean,10.072562251762447
-p5_prices,3.0,360.0,0.0125,NN,100.0,se,0.05494417322482825
-p5_prices,3.0,360.0,0.0125,NN,100.0,ci_lo,9.964871672241783
-p5_prices,3.0,360.0,0.0125,NN,100.0,ci_hi,10.180252831283111
-p5_prices,3.0,360.0,0.0125,NN,100.0,ref_value,10.126959105954446
-p5_prices,3.0,360.0,0.0125,NN,100.0,z_vs_ref,-0.9900386337494025
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,mean,10.094785130937659
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,se,0.05282809740103895
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,ci_lo,9.991242060031622
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,ci_hi,10.198328201843696
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,ref_value,10.126959105954446
-p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,z_vs_ref,-0.6090314927024948
-p5_boundary_error,0.0,180.0,0.0,LS,,E_mean,0.06513199625008786
-p5_boundary_error,0.0,180.0,0.0,LS,,E_max,0.16484826224298843
-p5_boundary_error,0.0,180.0,0.0,NN,,E_mean,0.07787322609862896
-p5_boundary_error,0.0,180.0,0.0,NN,,E_max,0.22933978219716836
-p5_boundary_error,1.0,180.0,0.0125,LS,,E_mean,0.032329406862011204
-p5_boundary_error,1.0,180.0,0.0125,LS,,E_max,0.23459989098369932
-p5_boundary_error,1.0,180.0,0.0125,NN,,E_mean,0.01946860479405345
-p5_boundary_error,1.0,180.0,0.0125,NN,,E_max,0.1646658580724346
-p5_boundary_error,2.0,360.0,0.0,LS,,E_mean,0.0554843825560065
-p5_boundary_error,2.0,360.0,0.0,LS,,E_max,0.1994691267945288
-p5_boundary_error,2.0,360.0,0.0,NN,,E_mean,0.023440816819711663
-p5_boundary_error,2.0,360.0,0.0,NN,,E_max,0.16637015628090268
-p5_boundary_error,3.0,360.0,0.0125,LS,,E_mean,0.04672941463558256
-p5_boundary_error,3.0,360.0,0.0125,LS,,E_max,0.3879414662660715
-p5_boundary_error,3.0,360.0,0.0125,NN,,E_mean,0.042856086395913484
-p5_boundary_error,3.0,360.0,0.0125,NN,,E_max,0.22949872319742157
-p5_N_effect,,,,,,E_mean_ref360_vs_ref180[delta=0.0],0.0025615232575963444
-p5_N_effect,,,,,,E_mean_ref360_vs_ref180[delta=0.0125],0.0007836086741124687
+p5_prices,3.0,360.0,0.0125,LS,80.0,mean,22.087031994549903
+p5_prices,3.0,360.0,0.0125,LS,80.0,se,0.06285421467965828
+p5_prices,3.0,360.0,0.0125,LS,80.0,ci_lo,21.963837733777773
+p5_prices,3.0,360.0,0.0125,LS,80.0,ci_hi,22.210226255322034
+p5_prices,3.0,360.0,0.0125,LS,80.0,ref_value,22.110207208547408
+p5_prices,3.0,360.0,0.0125,LS,80.0,z_vs_ref,-0.36871376272249573
+p5_prices,3.0,360.0,0.0125,NN,80.0,mean,22.027305966777355
+p5_prices,3.0,360.0,0.0125,NN,80.0,se,0.05470283895275043
+p5_prices,3.0,360.0,0.0125,NN,80.0,ci_lo,21.920088402429965
+p5_prices,3.0,360.0,0.0125,NN,80.0,ci_hi,22.134523531124746
+p5_prices,3.0,360.0,0.0125,NN,80.0,ref_value,22.110207208547408
+p5_prices,3.0,360.0,0.0125,NN,80.0,z_vs_ref,-1.5154833525488225
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,mean,22.10997053684711
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,se,0.05967839036227139
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,ci_lo,21.993000891737058
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,ci_hi,22.226940181957165
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,ref_value,22.110207208547408
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,z_vs_ref,-0.003965785586033862
+p5_prices,3.0,360.0,0.0125,LS,100.0,mean,10.071607095409604
+p5_prices,3.0,360.0,0.0125,LS,100.0,se,0.05483738245974884
+p5_prices,3.0,360.0,0.0125,LS,100.0,ci_lo,9.964125825788496
+p5_prices,3.0,360.0,0.0125,LS,100.0,ci_hi,10.179088365030712
+p5_prices,3.0,360.0,0.0125,LS,100.0,ref_value,10.126965081803945
+p5_prices,3.0,360.0,0.0125,LS,100.0,z_vs_ref,-1.0094935956320397
+p5_prices,3.0,360.0,0.0125,NN,100.0,mean,10.068484866122697
+p5_prices,3.0,360.0,0.0125,NN,100.0,se,0.051621902733803356
+p5_prices,3.0,360.0,0.0125,NN,100.0,ci_lo,9.967305936764442
+p5_prices,3.0,360.0,0.0125,NN,100.0,ci_hi,10.169663795480952
+p5_prices,3.0,360.0,0.0125,NN,100.0,ref_value,10.126965081803945
+p5_prices,3.0,360.0,0.0125,NN,100.0,z_vs_ref,-1.1328566477452588
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,mean,10.094812693580433
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,se,0.05282828454000108
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,ci_lo,9.991269255882031
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,ci_hi,10.198356131278835
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,ref_value,10.126965081803945
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,z_vs_ref,-0.6086207133825532
+p5_boundary_error,0.0,180.0,0.0,LS,,E_mean,0.06871175499677888
+p5_boundary_error,0.0,180.0,0.0,LS,,E_max,0.20352358518329183
+p5_boundary_error,0.0,180.0,0.0,NN,,E_mean,0.07175318764059722
+p5_boundary_error,0.0,180.0,0.0,NN,,E_max,0.22222268226893063
+p5_boundary_error,1.0,180.0,0.0125,LS,,E_mean,0.03389241277404102
+p5_boundary_error,1.0,180.0,0.0125,LS,,E_max,0.2370705275080035
+p5_boundary_error,1.0,180.0,0.0125,NN,,E_mean,0.017417811307373056
+p5_boundary_error,1.0,180.0,0.0125,NN,,E_max,0.15507711618121917
+p5_boundary_error,2.0,360.0,0.0,LS,,E_mean,0.0638759891753961
+p5_boundary_error,2.0,360.0,0.0,LS,,E_max,0.21854146919598008
+p5_boundary_error,2.0,360.0,0.0,NN,,E_mean,0.061940798475682506
+p5_boundary_error,2.0,360.0,0.0,NN,,E_max,0.2197362122140069
+p5_boundary_error,3.0,360.0,0.0125,LS,,E_mean,0.03715633367440387
+p5_boundary_error,3.0,360.0,0.0125,LS,,E_max,0.29155963956063524
+p5_boundary_error,3.0,360.0,0.0125,NN,,E_mean,0.042552104011518585
+p5_boundary_error,3.0,360.0,0.0125,NN,,E_max,0.17269366894209143
+p5_N_effect,,,,,,E_mean_ref360_vs_ref180[delta=0.0],0.0025612409697467788
+p5_N_effect,,,,,,E_mean_ref360_vs_ref180[delta=0.0125],0.0007834805103782317
 p1_ordering_checks,,,,LS,,A[N=180],0
 p1_ordering_checks,,,,LS,,B[N=180],0.0
-p1_ordering_checks,,,,LS,,F[N=180],0.20038442594039452
-p1_ordering_checks,,,,NN,,A[N=180],32
-p1_ordering_checks,,,,NN,,B[N=180],0.13375762359088242
-p1_ordering_checks,,,,NN,,F[N=180],0.150713675348383
+p1_ordering_checks,,,,LS,,F[N=180],0.06640500076281612
+p1_ordering_checks,,,,NN,,A[N=180],21
+p1_ordering_checks,,,,NN,,B[N=180],0.05147583595945591
+p1_ordering_checks,,,,NN,,F[N=180],0.081677411103922
 p1_ordering_checks,,,,ref,,A[N=180],0
 p1_ordering_checks,,,,ref,,B[N=180],0.0
 p1_ordering_checks,,,,ref,,F[N=180],0.0
@@ -380,27 +404,27 @@ p1_ordering_checks,,,,ref: max (V0 - V0.0125)^+ $,,B[N=180],
 p1_ordering_checks,,,,ref: max (V0 - V0.0125)^+ $,,F[N=180],0.0
 p1_ordering_checks,,,,LS,,A[N=360],0
 p1_ordering_checks,,,,LS,,B[N=360],0.0
-p1_ordering_checks,,,,LS,,F[N=360],0.10282415376893539
-p1_ordering_checks,,,,NN,,A[N=360],0
-p1_ordering_checks,,,,NN,,B[N=360],0.0
-p1_ordering_checks,,,,NN,,F[N=360],0.05608037915437976
+p1_ordering_checks,,,,LS,,F[N=360],0.09384635248961558
+p1_ordering_checks,,,,NN,,A[N=360],36
+p1_ordering_checks,,,,NN,,B[N=360],0.05121333193761018
+p1_ordering_checks,,,,NN,,F[N=360],0.1718414835493813
 p1_ordering_checks,,,,ref,,A[N=360],0
 p1_ordering_checks,,,,ref,,B[N=360],0.0
 p1_ordering_checks,,,,ref,,F[N=360],0.0
 p1_ordering_checks,,,,ref: max (V0 - V0.0125)^+ $,,A[N=360],
 p1_ordering_checks,,,,ref: max (V0 - V0.0125)^+ $,,B[N=360],
 p1_ordering_checks,,,,ref: max (V0 - V0.0125)^+ $,,F[N=360],0.0
-p5_perturbation,3.0,360.0,0.0125,NN,100.0,mean_diff[a=-0.02],-0.019139608872427185
-p5_perturbation,3.0,360.0,0.0125,NN,100.0,se_diff[a=-0.02],0.008065976977588938
+p5_perturbation,3.0,360.0,0.0125,NN,100.0,mean_diff[a=-0.02],0.021843802690027763
+p5_perturbation,3.0,360.0,0.0125,NN,100.0,se_diff[a=-0.02],0.010517071831943224
 p5_perturbation,3.0,360.0,0.0125,NN,100.0,mean_diff[a=0.0],0.0
 p5_perturbation,3.0,360.0,0.0125,NN,100.0,se_diff[a=0.0],0.0
-p5_perturbation,3.0,360.0,0.0125,NN,100.0,mean_diff[a=0.02],0.004608524979125886
-p5_perturbation,3.0,360.0,0.0125,NN,100.0,se_diff[a=0.02],0.009036048999081312
-timing_eval,0.0,180.0,0.0,,,evaluation_3_policies_s,1.1073838060000298
-timing_eval,1.0,180.0,0.0125,,,evaluation_3_policies_s,1.1086659559999816
-timing_eval,2.0,360.0,0.0,,,evaluation_3_policies_s,2.2453691169999956
-timing_eval,3.0,360.0,0.0125,,,evaluation_3_policies_s,2.5066619389999687
-timing_eval,3.0,360.0,0.0125,,,perturbation_s,2.371419438000089
+p5_perturbation,3.0,360.0,0.0125,NN,100.0,mean_diff[a=0.02],-0.01616048526773737
+p5_perturbation,3.0,360.0,0.0125,NN,100.0,se_diff[a=0.02],0.011424229529280721
+timing_eval,0.0,180.0,0.0,,,evaluation_3_policies_s,1.0275028519999978
+timing_eval,1.0,180.0,0.0125,,,evaluation_3_policies_s,0.9189746589999572
+timing_eval,2.0,360.0,0.0,,,evaluation_3_policies_s,1.9044462090000138
+timing_eval,3.0,360.0,0.0125,,,evaluation_3_policies_s,1.8522027719999983
+timing_eval,3.0,360.0,0.0125,,,perturbation_s,1.9076658539999585
 environment,,,,,,python,3.11.15
 environment,,,,,,numpy,2.4.4
 environment,,,,,,scipy,1.17.1
@@ -412,4 +436,4 @@ environment,,,,,,processor,x86_64
 environment,,,,,,accelerator,none (CPU)
 environment,,,,,,precision_sim_eval,float64
 environment,,,,,,precision_nn_training,float32
-environment,,,,,,reference_source,own-solver
+environment,,,,,,reference_source,supplied

@@ -64,15 +64,14 @@ def tables():
     out["ORDER_TABLE"] = "\n".join(rows)
 
     # reference verification
-    ref = T("p2_reference_refinement"); mx = ref.groupby("refinement")[["dV_spots", "db"]].max()
-    sp = mx.loc[["spatial dx/2", "spatial dx/4"]].max(); tm = mx.loc[["time h/2 (substeps=2)", "time h/4 (substeps=4)"]].max()
-    nch = T("p2_N_change")
+    v = T("p2_supplied_verify"); x = T("p2_own_vs_supplied"); nch = T("p2_N_change")
     out["VERIFY_TABLE"] = "\n".join([
-        "| Change | Max price change (\\$) | Max boundary change (\\$) |", "|---|---|---|",
-        f"| Spatial ($dx/2$, $dx/4$) | {sci(sp.dV_spots)} | {sci(sp.db)} |",
-        f"| Time integration ($h/2$, $h/4$) | {sci(tm.dV_spots)} | {sci(tm.db)} |",
-        f"| Domain / kernel tails | $\\le 10^{{-14}}$ | $\\le 3\\times10^{{-12}}$ |".replace("{{", "{").replace("}}", "}"),
-        f"| $N$: 180 → 360 (different problem) | {sci(nch[['dV(80)','dV(100)']].abs().values.max())} | {f3(nch.max_db.max())} |"])
+        "| Comparison (max over the four cases) | Price change at $S_0\\in\\{60,80,100\\}$ (\\$) | Boundary change (\\$) |", "|---|---|---|",
+        f"| Spatial: $\\Delta S$ 0.10 → 0.05 (16 substeps) | {sci(v.spatial_dV_max.max())} | {sci(v.spatial_db_max.max())} |",
+        f"| Time: 16 → 32 substeps ($\\Delta S=0.05$) | {sci(v.temporal_dV_max.max())} | {sci(v.temporal_db_max.max())} |",
+        f"| Saved arrays vs recomputed | {sci(v.saved_price_max_diff.max())} | {sci(v.saved_boundary_max_diff.max())} |",
+        f"| Our independent log-grid solver vs saved arrays | {sci(x.dV_max.max())} | {sci(x.db_max.max())} |",
+        f"| $N$: 180 → 360 (a different problem) | {sci(nch[['dV(80)','dV(100)']].abs().values.max())} | {f3(nch.max_db.max())} |"])
 
     # LS diagnostics
     d = T("p3_ls_diagnostics")
@@ -147,6 +146,30 @@ def numbers():
     sm = T("p4_summary")
     n["TSUP"] = f"{sm.time_supervised_s.sum():.0f}"; n["TPAY"] = f"{sm.time_payoff_s.sum():.0f}"
     mc = T("e3_coupled_mc"); n["MC_OWN"] = f"{100*mc.frac_paths_Qd_lt_Q0.iloc[1]:.1f}"
+    o = T("p1_ordering_checks")
+    onn = lambda N, k: o[(o.N == N) & (o.method == "NN")][k].iloc[0]
+    n["NNA180"], n["NNA360"] = str(int(onn(180, "A"))), str(int(onn(360, "A")))
+    n["NNB"] = f3(max(onn(180, "B"), onn(360, "B")))
+    d3 = T("p3_ls_diagnostics")
+    n["CAP180"] = str(int(d3[d3.case == 1].capped_count.iloc[0])); n["CAP360"] = str(int(d3[d3.case == 3].capped_count.iloc[0]))
+    v4 = T("p4_validation")
+    sel = v4[v4.selected]
+    n["SEL"] = ", ".join(f"{int(r.checkpoint)}" for r in sel.sort_values("case").itertuples())
+    n["MAXZVAL"] = f"{(sel.diff_vs_ckpt0 / sel.se_diff.where(sel.se_diff > 0)).abs().max():.1f}"
+    e0 = lambda c: v4[(v4.case == c) & (v4.checkpoint == 0)].E_mean_vs_ref.iloc[0]
+    es = lambda c: v4[(v4.case == c) & (v4.selected)].E_mean_vs_ref.iloc[0]
+    n["C3E0"], n["C3ES"] = f3(e0(3)), f3(es(3))
+    n["C3NN60"] = f3(-g(3, 60.0, "NN - ref-boundary policy").mean_diff)
+    n["C3NN60SE"] = f3(g(3, 60.0, "NN - ref-boundary policy").se)
+    lsnn = lambda c, s0: g(c, s0, "LS - NN")
+    n["C2NNGAIN"] = f3(-lsnn(2, 80.0).mean_diff); n["C2NNGAINSE"] = f3(lsnn(2, 80.0).se)
+    n["C0LSGAIN"] = f3(lsnn(0, 80.0).mean_diff); n["C0LSGAINSE"] = f3(lsnn(0, 80.0).se)
+    n["C3LSGAIN"] = f3(lsnn(3, 80.0).mean_diff); n["C3LSGAINSE"] = f3(lsnn(3, 80.0).se)
+    n["PCAP"] = str(int(m.loc[0.02].cap_binds_dates)); n["PAPPL"] = f3(m.loc[0.02].applied_shift_mean)
+    n["PCHM"] = f"{100*m.loc[-0.02].frac_paths_changed:.0f}"; n["PCHP"] = f"{100*m.loc[0.02].frac_paths_changed:.0f}"
+    sw = T("p5_perturbation_sweep_supplementary")
+    neg = sw[sw.a < 0]
+    n["SWNEGMAX"] = f3(neg.mean_diff.max()); n["SWPOS8"] = f2(sw[sw.a == 0.08].mean_diff.iloc[0])
     call = T("e4_call_orderings").set_index("ordering")
     n["CALL_OK"] = f4(call.loc["both (correct)", "C(0,100)"]); n["CALL_PUT"] = f4(call.loc["after (put-style)", "C(0,100)"])
     n["CALL_EU"] = f4(call.loc["european", "C(0,100)"])
@@ -159,7 +182,7 @@ subtitle: "Baruch MFE — Scientific Computing in Finance, Assignment 1"
 author: "Aditi Joshi, Helen Siavelis, Jaskaran Kalra, William McDonnell"
 ---
 
-*Reference and draw order.* The assignment refers to a supplied `reference_solver.py`, `reference_results.npz` and `README.md`. We did not receive these, so the numerical reference is our own independently validated grid solver (Section 2), and the random-draw order is our own documented choice. Both are isolated in `reference.py` and `simulation.py` / `nn_policy.py`, so the supplied versions can be substituted and `python run_all.py` rerun.
+*Conventions.* All reference values and boundaries are the supplied `reference_results.npz` arrays (preserved unchanged), and every random draw follows the supplied `README.md` conventions. Our own independent solver is used only for the Part 1 illustrations and as a cross-check (Section 2).
 
 # 1. The exercise boundary
 
@@ -177,11 +200,11 @@ $$V_\delta(t,s)\ge e^{-r\varepsilon}\big(K-(1-\delta)se^{r\varepsilon}\big)=Ke^{
 
 If $s$ is in the exercise region, $K-s\ge Ke^{-r\varepsilon}-(1-\delta)s$, i.e. $s\le K(1-e^{-r\varepsilon})/\delta$. Hence $b_\delta(d_k-\varepsilon)\le K(1-e^{-r\varepsilon})/\delta\approx Kr\varepsilon/\delta\to0$.
 
-*Grid version.* The dividend date is itself an exercise date, so stopping there is an admissible grid stopping time and the same bound holds with $\varepsilon=(j_d-j)h$. Our solver satisfies the lower bound at every node.
+*Grid version.* The dividend date is itself an exercise date, so stopping there is an admissible grid stopping time and the same bound holds with $\varepsilon=(j_d-j)h$. The reference satisfies the lower bound at every node.
 
-*Proximity depends on $s$.* A fixed $s$ is never exercised when $\varepsilon<\varepsilon^*(s)=-r^{-1}\log(1-\delta s/K)\approx\delta s/(rK)$. That is about 9 days at $s=10$ and about 75 days at $s=80$. The bound makes this precise because it compares $\delta s$ directly with $K(1-e^{-r\varepsilon})$.
+*Proximity depends on $s$.* A fixed $s$ is never exercised when $\varepsilon<\varepsilon^*(s)=-r^{-1}\log(1-\delta s/K)\approx\delta s/(rK)$: about 9 days at $s=10$ and 75 days at $s=80$.
 
-*Positive values on the grid.* One grid step before a dividend the bound is still positive: $K(1-e^{-rh})/\delta=1.63$ ($N=180$) and $0.81$ ($N=360$). These shrink linearly in $h$, which is consistent with a zero limit as $\varepsilon\downarrow0$. In fact the computed boundary lies *on* the bound for about 0.13 years before each dividend: for small $s$, exercise at $d_k^+$ is almost certain, so the bound is attained. This produces the straight segments with slope $\approx rK/\delta$ in Cox and Rubinstein's figure.
+*Positive values on the grid.* One grid step before a dividend the bound is still positive: $K(1-e^{-rh})/\delta=1.63$ ($N=180$) and $0.81$ ($N=360$). These shrink linearly in $h$, which is consistent with a zero limit as $\varepsilon\downarrow0$. In fact the reference boundary lies *on* the bound for about 0.13 years before each dividend: for small $s$, exercise at $d_k^+$ is almost certain, so the bound is attained. This produces the straight segments with slope $\approx rK/\delta$ in Cox and Rubinstein's figure.
 
 *Jump and maturity.* In calendar time the boundary jumps **up** at each $d_k$ (to $0.69K$, $0.75K$, $0.89K$), because once the dividend is paid there is no reason left to wait for it. After $d_3$ no dividend remains and $r>0$, so the boundary tends to $K$ at maturity, as in the $\delta=0$ curve of Cox and Rubinstein's Fig. 5-37 (Cox and Rubinstein 1985).
 
@@ -189,7 +212,7 @@ If $s$ is in the exercise region, $K-s\ge Ke^{-r\varepsilon}-(1-\delta)s$, i.e. 
 
 If $V_\delta(t_j,s)=K-s$, then $K-s=V_\delta\ge V_0\ge K-s$. So the exercise regions are nested and $b_{0.0125,N}\le b_{0,N}$. For $t_j\ge d_3$, including $t_j=d_3$ compared at the same *post-jump* price, no dividend remains and the two problems coincide.
 
-A coupled simulation shows why the common $\tau$ matters. With one $\tau$ no path violates dominance. When each model uses its own threshold rule, @@MC_OWN@@% of paths do.
+In a coupled simulation, one common $\tau$ gives no violations, but model-specific threshold rules violate dominance on @@MC_OWN@@% of paths.
 
 **Item 4.** The call's intrinsic value *falls* at the jump. Exercising first captures the dividend, so
 
@@ -204,23 +227,19 @@ and the maximum can bind. A call code must therefore test exercise **before** ap
 The reference is exactly ordered: $A=B=F=0$, and $\max_s(V^{ref}_{0,N}-V^{ref}_{0.0125,N})^+=0$. Neither fitted method is constrained to respect the ordering, so their diagnostics measure **learning error**:
 
 * $F>0$ after $d_3$, where the two problems are identical. The two fits come from different samples, and the $\delta$ paths sit lower after three dividends.
-* The NN violations at $N=180$ ($A=32$) come from case 0. Its selected checkpoint let the early-date boundary drift down to about $0.49K$ (Section 4).
+* The NN violates the ordering on @@NNA180@@ dates ($N=180$) and @@NNA360@@ dates ($N=360$), by at most $B=$ @@NNB@@. All violations lie just after $d_1$ and $d_2$, where the $\delta$-network overshoots the post-dividend boundary (by up to $0.08K$, Fig. 1b) and so ends up above the $\delta=0$ network.
 
 # 2. Reference, simulation and the cap
 
-**Reference.** Our solver uses a uniform $\log S$ grid with $S=K$ on a node:
-
-* The Gaussian step is integrated exactly for the piecewise-linear interpolant, with a $dx^2/6$ variance correction. Without it, the European error grew with $N$.
-* The dividend is an exact shift of 10 grid nodes.
-* European prices match the closed form to about $2\times10^{-5}$.
+**Reference.** `python reference_solver.py --verify` passed: the saved arrays match a recomputation, and the refinements change little.
 
 @@VERIFY_TABLE@@
 
-Refinement approximates the *same* problem more closely. Changing $N$ changes the *problem*: more exercise rights raise the value and move the boundary about 100 times more than any refinement. So an accuracy gain smaller than about $10^{-5}$ \$ in price or $10^{-3}$ \$ in boundary cannot be resolved against this reference.
+The largest boundary changes occur on the last exercise date, where the boundary is steepest. As an independent check, our own solver agrees with the supplied arrays to within the reference's own refinement changes. Our solver uses a different method: an exact Gaussian step on a $\log S$ grid, with a $dx^2/6$ variance correction.
 
-**Simulation.** We sample the exact lognormal step and apply $(1-\delta)$ on arrival at an integer dividend index. A path that starts at a dividend date is already post-jump. On the final $S_0=100$ samples, $(\bar S_T-S_0e^{rT}(1-\delta)^3)/\mathrm{SE}=$ @@MART@@ for cases 0–3.
+Refinement approximates the *same* problem more closely. Changing $N$ changes the *problem*: more exercise rights raise the value, and the boundary moves over 100 times more than under any refinement. The reference is precise to about $2\times10^{-5}$ \$ in price and $2\times10^{-3}$ \$ in boundary, so smaller claimed accuracy gains cannot be resolved.
 
-The optimal boundary lies on the cap $U_j$ close to each dividend, which is why both fitted policies are given the cap rather than learning it.
+**Simulation.** We sample the exact lognormal step, adding $\log(1-\delta)$ in the column that arrives at each integer dividend index (the README arithmetic). A path that starts at a dividend date is already post-jump. On the final $S_0=100$ samples, $(\bar S_T-S_0e^{rT}(1-\delta)^3)/\mathrm{SE}=$ @@MART@@ for cases 0–3.
 
 # 3. Least-squares policy
 
@@ -236,9 +255,9 @@ We follow the specified recursion: a cubic regression in $x=S_j/K$ on in-the-mon
 
 *Low bias, downward spikes and capping.*
 
-* With $\delta=0$ the fit is biased about $0.03$–$0.05K$ low and is noisy near maturity, where the value function has a kink.
+* With $\delta=0$ the fit is biased about $0.065K$ low on average and is noisy near maturity, where the value function has a kink.
 * Further from a dividend, the exercise premium $\delta s-K(1-e^{-r\varepsilon})$ is only cents, below the regression's resolution. There the cubic sometimes returns only the low crossing, which produces the downward spikes in Fig. 1(b).
-* Close to each dividend the cap takes over. It binds on 85 dates ($N=180$) and 149 dates ($N=360$).
+* Close to each dividend the cap takes over. It binds on @@CAP180@@ dates ($N=180$) and @@CAP360@@ dates ($N=360$).
 
 # 4. Neural policy
 
@@ -248,23 +267,21 @@ We follow the specified recursion: a cubic regression in $x=S_j/K$ on in-the-mon
 * **Warm start:** 1,000 supervised Adam steps towards $\hat b^{LS}$.
 * **Payoff stage:** 2,400 Adam steps on the smoothed payoff, with batches of 512 from 8,192 random-start paths.
 * **Precision:** training in float32; validation in float64.
-* **Cost:** @@TSUP@@ s supervised plus @@TPAY@@ s payoff training for all four cases on 2 CPU threads.
+* **Cost:** @@TSUP@@ s supervised plus @@TPAY@@ s payoff training for all four cases, with 2 CPU threads, 1 inter-op thread and deterministic algorithms (README settings).
 
 **Randomised stopping.** If the holder has not yet stopped, they stop at $t_j$ with probability $p_j$, independently of the future. Then $w_j=p_j\prod_{k<j}(1-p_k)$ is the probability of stopping *first* at $t_j$, and $\sum_jw_j=1$ because $p_N=1$. So $R_\theta$ is the path-conditional expectation of the discounted payoff under this randomised rule. It is smooth in $\theta$, and it tends to the hard rule as $\epsilon\to0$; with $\epsilon=10^{-7}$ it matches the hard rule to within $10^{-6}$ \$.
 
 @@VAL_TABLE@@
 
-**Checkpoint selection.** Every paired validation gain is within about 2 SE of zero, so on 4,096 random-start paths the checkpoints are statistically indistinguishable.
+**Checkpoint selection.** The selected checkpoints are @@SEL@@ for cases 0–3; checkpoint 0 was never selected. Every selected gain over checkpoint 0 is within @@MAXZVAL@@ paired SE, so on 4,096 random-start paths the checkpoints are statistically indistinguishable, and selection is close to picking among equals.
 
-* **Cases 1 and 3:** checkpoint 0 is selected, i.e. the smoothed LS warm start.
-* **Case 2:** payoff training more than halved the boundary error.
-* **Case 0:** the selected checkpoint has a *worse* boundary. Near $t_0$ it drifted to about $0.49K$, a region few random-start validation paths visit.
+Payoff training changed the boundary error little in cases 0–2. In case 3 it made the boundary *worse* ($E_{mean}$ @@C3E0@@ → @@C3ES@@): it overshoots the reference after $d_1$ and sits below it between $d_2$ and $d_3$. The validation mean barely reacts, because the value is flat near the optimal threshold (Section 5).
 
 **Research connection.**
 
-* *Becker, Cheridito and Jentzen (2019)* decompose a stopping time into 0–1 stop/continue decisions, one network per date. During training each decision is relaxed to a logistic output in $(0,1)$, and the networks are trained **backward, one date at a time**. The economic objective is the **optimal-stopping value**: maximise the expected reward of the stopping time. The learned rule gives a lower bound, and a dual martingale gives an upper bound and confidence intervals.
-* *Bühler et al. (2019)* parametrise the **hedging strategy** by semi-recurrent networks and train it with mini-batch Adam directly on simulated paths. The economic objective is to **minimise a convex risk measure** (e.g. expected shortfall, entropic risk) of the hedged terminal position under frictions such as transaction costs. This gives indifference prices $p(Z)=\pi(-Z)-\pi(0)$.
-* Our payoff stage uses Becker et al.'s relaxation, but on a single threshold parametrisation trained **jointly over all dates**. It is optimised by stochastic gradient on simulated paths, as in deep hedging, but with a risk-neutral **expected-payoff** objective rather than a risk measure.
+* *Becker, Cheridito and Jentzen (2019)* learn one stop/continue network per date, relaxed to a logistic probability and trained **backward, one date at a time**. Economic objective: the **optimal-stopping value**, i.e. maximising the expected reward. The learned rule gives a lower bound; a dual martingale gives an upper bound.
+* *Bühler et al. (2019)* train semi-recurrent **hedging-strategy** networks with Adam on simulated paths. Economic objective: **minimise a convex risk measure** (e.g. expected shortfall) of hedged P&L under transaction costs, which yields indifference prices.
+* Our payoff stage borrows Becker et al.'s relaxation, applied to one threshold trained **jointly over all dates**, and optimises it on simulated paths as in deep hedging, but for **expected payoff** rather than a risk measure.
 
 # 5. Values and boundaries
 
@@ -277,16 +294,19 @@ The frozen rule is an admissible stopping time, so its expected payoff is at mos
 Paired against the reference boundary applied on the same paths, at $S_0\in\{80,100\}$:
 
 * LS loses @@LS_LOSS@@ \$ and the NN loses @@NN_LOSS@@ \$.
-* The NN beats LS in case 2 (@@C2NN80@@ vs @@C2LS80@@ \$ at $S_0=80$) and ties LS in cases 1 and 3.
-* At $S_0=60$ the NN loses @@C0NN60@@ \$ in case 0 and @@C1NN60@@ \$ in case 1, because its $t_0$ boundary sits below 60, so it waits instead of exercising.
+* At $S_0=80$, NN vs LS:
+  * the NN beats LS in case 2 by @@C2NNGAIN@@ \$ (SE @@C2NNGAINSE@@);
+  * LS beats the NN in case 0 by @@C0LSGAIN@@ \$ (SE @@C0LSGAINSE@@) and in case 3 by @@C3LSGAIN@@ \$ (SE @@C3LSGAINSE@@);
+  * the two tie in case 1.
+* At $S_0=60$ every policy exercises at once except the case-3 NN. Its $t_0$ boundary sits just below 60, so it waits, and loses @@C3NN60@@ \$ (SE @@C3NN60SE@@).
 
 **Boundary accuracy.**
 
 @@ERR_TABLE@@
 
-Compare each policy with the reference for the same $N$ first. The optimal boundary itself moves by only $E_{mean}=$ @@NEFF0@@ ($\delta=0$) and @@NEFF1@@ ($\delta=0.0125$) between $N=180$ and $360$. The fitted errors are 10–100 times larger (LS @@ELS@@, NN @@ENN@@). So every change in a fitted policy with $N$ is learning error, set by the fixed budgets and by checkpoint selection, not by the extra exercise dates.
+Compare each policy with the reference for the same $N$ first. The optimal boundary itself moves by only $E_{mean}=$ @@NEFF0@@ ($\delta=0$) and @@NEFF1@@ ($\delta=0.0125$) between $N=180$ and $360$. The fitted errors are 7–90 times larger (LS @@ELS@@, NN @@ENN@@). So a fitted policy's change with $N$ is learning error (fixed budgets, checkpoint selection), not the extra exercise dates.
 
-**Price vs boundary accuracy.** Mean boundary errors of 2–8% of $K$ cost only cents in price. The one large loss (case 0, $S_0=60$) comes from an error at a single, heavily visited state rather than a large average error.
+**Price vs boundary accuracy.** Mean boundary errors of 2–7% of $K$ cost at most about 0.25 \$ in price, and usually a few cents. The two need not rank policies alike: in case 3 the NN has the smaller maximum error but the larger price loss, because what matters is the error where paths decide.
 
 **Perturbation** (case 3, $S_0=100$, same evaluation paths):
 
@@ -294,25 +314,27 @@ Compare each policy with the reference for the same $N$ first. The optimal bound
 
 Three effects link boundary changes to price changes:
 
-* **The cap.** It absorbs most of the upward shift: 147 dates are capped, so the applied mean shift is only $0.014K$.
-* **States visited.** Only paths that enter the shifted band change decision, about 17–19% of paths.
-* **Direction of the change.** Lowering the boundary delays exercise and costs @@PM@@ \$ (SE @@PMSE@@; @@PMCH@@ \$ per affected path). Raising it gains @@PP@@ \$ (SE @@PPSE@@), which is not significant.
+* **The cap.** It absorbs much of the upward shift: @@PCAP@@ dates are capped, so the applied mean shift is only @@PAPPL@@$K$.
+* **States visited.** Only paths that enter the shifted band change decision: @@PCHM@@% of paths for $a=-0.02$ and @@PCHP@@% for $a=+0.02$.
+* **Direction of the change.**
+  * Lowering the boundary delays exercise and *gains* @@PM@@ \$ (SE @@PMSE@@; @@PMCH@@ \$ per affected path).
+  * Raising it makes those paths exercise earlier and changes the price by @@PP@@ \$ (SE @@PPSE@@).
 
-The asymmetry arises because the NN sits about $0.04K$ below the reference: moving down goes further from the optimum, while moving up approaches it on the flat part of the value surface. A finer sweep (in the code) shows the price is flat within noise for $a\in[0,0.06]$.
+The sign pattern follows where the NN is wrong along the paths. It lies $0.031K$ below the reference on average, but overshoots by up to $0.08K$ just after $d_1$. The gain from lowering it is consistent with those early-exercise errors dominating at $S_0=100$. Our finer sweep (in the code) stays within about @@SWNEGMAX@@ \$ of zero for $a\in[-0.08,0]$ and falls steadily for $a>0$ (@@SWPOS8@@ \$ at $a=0.08$). Exercising too early is costly; waiting a little longer is almost free.
 
 # Figures
 
-![**Figure 1.** Exercise boundaries $b/K$ against $u=T-t$ for $N=360$: reference (blue), LS (orange) and selected NN (green); the $N=180$ reference is dashed. Panel (a) $\delta=0$, panel (b) $\delta=0.0125$. Curves are broken at the dividends (dotted).](figures/fig1_boundaries.png){width=6.9in}
+![**Figure 1.** Exercise boundaries $b/K$ against $u=T-t$ for $N=360$: reference (blue), LS (orange) and selected NN (green); the $N=180$ reference is dashed. Panel (a) $\delta=0$, panel (b) $\delta=0.0125$. Curves are broken at the dividends (dotted).](figures/fig1_boundaries.png){width=5.8in}
 
-![**Figure 2.** Case 3 around $d_3$ ($|t-d_3|\le1/24$). Right of the dotted line is before $d_3$ in calendar time; left is after. On the pre-dividend side the reference lies on the Part 1 bound $K(1-e^{-r(d_3-t)})/(\delta K)$ (grey dashed); LS and NN lie below it, since the cap only limits them from above.](figures/fig2_final_dividend.png){width=4.2in}
+![**Figure 2.** Case 3 around $d_3$ ($|t-d_3|\le1/24$). Right of the dotted line is before $d_3$ in calendar time; left is after. On the pre-dividend side the reference lies on the Part 1 bound $K(1-e^{-r(d_3-t)})/(\delta K)$ (grey dashed); LS and NN lie below it, since the cap only limits them from above.](figures/fig2_final_dividend.png){width=3.2in}
 
 # Reproducibility and AI use
 
-* **Command:** `python run_all.py`. It reproduces every table and figure (about 3 minutes); a full rerun gave identical outputs apart from the timing columns.
-* **Records:** seeds, sizes, versions, hardware (2 CPU threads, no accelerator), precision and timings are in `results.csv` and `fitted/*.json`.
+* **Command:** `python run_all.py`. Reproduces every table and figure in about 3 minutes; reruns are identical apart from timings.
+* **Records:** seeds, sizes, versions, hardware (2 CPU threads, no accelerator), precision and timings are in `results.csv` and `fitted/*.json`. Run on Python 3.11 (README: 3.12); `--verify` still passed.
 * **Contributions:** Aditi Joshi — [TODO]; Helen Siavelis — [TODO]; Jaskaran Kalra — [TODO]; William McDonnell — [TODO].
 
-**AI use.** We used Claude (Anthropic; configured model identifier claude-opus-5-5, via Cowork) to draft code, derivations and text, and we verified its suggestions. One suggestion we checked computationally: integrating the piecewise-linear transition kernel exactly adds a spurious variance of $dx^2/6$ per step. Without the correction, European errors were about $2.5\times10^{-3}$ ($N=180$) and $5\times10^{-3}$ ($N=360$) and grew with $N$. With it, they fell to about $2\times10^{-5}$, independent of $N$.
+**AI use.** We used Claude (Anthropic; model identifier claude-opus-5-5, via Cowork) to draft code, derivations and text, and verified its suggestions. One we checked computationally: the piecewise-linear kernel of our cross-check solver adds a spurious variance $dx^2/6$ per step. Without correcting it, European errors grew with $N$ (about $2.5\times10^{-3}$ at $N=180$, $5\times10^{-3}$ at $N=360$); with it they fell to about $2\times10^{-5}$.
 
 # References
 

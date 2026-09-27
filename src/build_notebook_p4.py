@@ -8,7 +8,7 @@ md("""# Part 4 walkthrough — neural exercise boundary (PyTorch)
 Run `python run_part4.py` first (about 1.5 min on 2 CPU threads). It trains all four cases and saves the tables and figures this notebook reads. All the modelling code is in `nn_policy.py`.
 
 **Modelling choices that are ours** (everything else follows the assignment):
-* The path-bank draw order is **assumed**: $J$, then $S_J\\sim A$, then the normals. Confirm it against README.md.
+* The path-bank draw order follows the supplied README: $J$, then $S_J\\sim A$, then the normals. Torch runs with 2 threads, 1 inter-op thread and deterministic algorithms.
 * The in-the-money indicator uses $S_j<K$ on the path. Dates before $J$ get $p_j=0$, so they neither stop nor discount.
 * Supervised targets are the stored float64 LS thresholds, cast to float32."""),
 code("""import numpy as np, pandas as pd, torch
@@ -40,9 +40,9 @@ code("""display(pd.read_csv("tables/p4_summary.csv"))
 display(pd.read_csv("tables/p4_validation.csv"))
 Image("figures/p4_validation.png")"""),
 md("""**Reading.**
-* All paired gains are within about 2 SE of zero, so selection is close to a coin toss among statistically equal checkpoints.
-* Case 2: payoff training improved the boundary a lot ($E_{mean}$ 0.056 → 0.023).
-* Case 0: the selected checkpoint has a worse boundary than checkpoint 400. Validation paths rarely start near $t_0$, so the early-date drift goes unpenalised."""),
+* All selected gains are within about 1.3 paired SE of zero, so selection is close to picking among statistically equal checkpoints. Checkpoint 0 was never selected.
+* Payoff training barely changed the boundary error in cases 0–2.
+* In case 3 it made the boundary worse ($E_{mean}$ 0.029 → 0.043): the network overshoots just after $d_1$. The validation mean barely reacts, because the value is flat near the optimal threshold."""),
 md("""## Step 5 — Independent evaluation (float64, 50,000 fresh paths per start)"""),
 code("""p = pd.read_csv("tables/p5_prices.csv")
 display(p.pivot_table(index=["case","S0"], columns="method", values="mean"))

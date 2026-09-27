@@ -41,10 +41,12 @@ Training (assignment)
 Precision: training in float32 (allowed); validation and final boundary
 evaluation in float64 (a float64 copy of the network).
 
-RANDOM-DRAW ORDER for the path banks -- ASSUMPTION (README.md not seen):
-    J  = rng.integers(0, N, n)          # start index
-    SJ = simulation.sample_A(rng, n)    # start price (post-jump at a dividend)
-    Z  = rng.standard_normal((n, N))    # column i drives step i -> i+1
+RANDOM-DRAW ORDER for the path banks (supplied reference_README.md, rule 3):
+    J  = rng.integers(0, N, size=n, dtype=int64)   # start index
+    SJ = simulation.sample_A(rng, n)               # start price (post-jump at a dividend)
+    Z  = rng.standard_normal((n, N))               # column j -> target date j+1
+Reproducibility settings (README): 2 intra-op threads, 1 inter-op thread,
+deterministic algorithms; torch.randint(8192, (512,)) per payoff minibatch.
 """
 
 import copy
@@ -113,11 +115,11 @@ class BoundaryModel(nn.Module):
 # Path banks (random start J, S_J ~ A)
 # ---------------------------------------------------------------------------
 def make_bank(c: int, seed: int, n: int):
-    """Returns (J, S) with S float64 of shape (n, N+1), NaN before J."""
+    """Returns (J, S) with S float64 of shape (n, N+1); S = A in every slot through J."""
     N, delta = sim.CASES[c]
     tg = cfg.TimeGrid(N)
     rng = np.random.default_rng(seed)
-    J = rng.integers(0, N, n)
+    J = rng.integers(0, N, size=n, dtype=np.int64)
     SJ = sim.sample_A(rng, n)
     Z = rng.standard_normal((n, N))
     return J, sim.paths_from_J(J, SJ, Z, tg, delta)
@@ -202,7 +204,7 @@ def train_case(c: int, b_ls: np.ndarray, log_every: int = 200, verbose=True):
     pay_hist = []
     for it in range(1, N_PAYOFF + 1):
         eps = EPS_SCHEDULE[0][1] if it <= EPS_SCHEDULE[0][0] else EPS_SCHEDULE[1][1]
-        idx = torch.randint(0, N_BANK_TRAIN, (BATCH,))            # with replacement
+        idx = torch.randint(N_BANK_TRAIN, (BATCH,))               # with replacement (README form)
         opt.zero_grad()
         loss = -payoff_R(model(), bt, idx, eps).mean() / cfg.K
         loss.backward()

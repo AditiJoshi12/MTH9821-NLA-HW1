@@ -132,7 +132,7 @@ def apply_hard_rule(S: np.ndarray, b: np.ndarray, tg: cfg.TimeGrid, j_start=None
 
     Returns (Q, tau): Q = payoff discounted to TIME ZERO; tau = stop index.
     (Callers that need discounting to t_J multiply by e^{r t_J}.)
-    NaN entries (before a random start) never trigger exercise.
+    Dates before a random start j_start never trigger exercise.
     """
     N = tg.N
     with np.errstate(invalid="ignore"):

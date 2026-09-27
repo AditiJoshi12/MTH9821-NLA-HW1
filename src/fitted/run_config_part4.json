@@ -5,6 +5,8 @@
   "torch_threads": 2,
   "cpu_count": 2,
   "device": "cpu (no accelerator; nothing to synchronise when timing)",
+  "torch_interop_threads": 1,
+  "deterministic_algorithms": true,
   "training_dtype": "float32",
   "validation_evaluation_dtype": "float64",
   "seeds": {
@@ -12,38 +14,38 @@
     "train_bank": "2000+c",
     "val_bank": "3000+c"
   },
-  "bank_draw_order_ASSUMED": "J, then S_J ~ A, then (n, N) normals; see nn_policy.py",
+  "bank_draw_order": "README rule 3: J, then S_J ~ A, then (n, N) normals",
   "selected": {
-    "0": 2400,
-    "1": 0,
-    "2": 2400,
-    "3": 0
+    "0": 2000,
+    "1": 2000,
+    "2": 1200,
+    "3": 2400
   },
   "timings": {
     "0": {
-      "supervised_s": 12.623436343000037,
-      "banks_s": 0.1978247109999529,
-      "payoff_s": 11.611254404000022,
-      "validation_s": 0.020614368999986254
+      "supervised_s": 1.6161129719999963,
+      "banks_s": 0.13763775399996803,
+      "payoff_s": 7.369194847000017,
+      "validation_s": 0.016756695999958993
     },
     "1": {
-      "supervised_s": 2.3884189580000452,
-      "banks_s": 0.1444427659999974,
-      "payoff_s": 15.006662608,
-      "validation_s": 0.02255709400003525
+      "supervised_s": 1.2242917400000124,
+      "banks_s": 0.12282797199998186,
+      "payoff_s": 9.339962695999986,
+      "validation_s": 0.01698163300000033
     },
     "2": {
-      "supervised_s": 1.2093623609999895,
-      "banks_s": 0.2870260020000046,
-      "payoff_s": 16.83736029900001,
-      "validation_s": 0.03943887600001972
+      "supervised_s": 0.6316892059999759,
+      "banks_s": 0.24570751300001348,
+      "payoff_s": 11.37317242499995,
+      "validation_s": 0.030033500999991247
     },
     "3": {
-      "supervised_s": 2.4983166929999925,
-      "banks_s": 0.24980798499996126,
-      "payoff_s": 20.663075632000073,
-      "validation_s": 0.05022160200007875
+      "supervised_s": 1.4534662070000195,
+      "banks_s": 0.2179606639999747,
+      "payoff_s": 12.602014581999981,
+      "validation_s": 0.03183960199999092
     }
   },
-  "evaluation_s": 6.799666931000047
+  "evaluation_s": 5.202540694999982
 }
