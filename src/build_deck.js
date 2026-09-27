@@ -285,4 +285,4 @@ s.addText("How accurately must the boundary be learned?", { x: 0.6, y: 0.45, w: 
 s.addText("Reference: our own validated grid solver (the supplied reference files were not available); draw order documented in the code.",
   { x: 0.6, y: 4.85, w: 8.8, h: 0.4, fontFace: BF, fontSize: 11, italic: true, color: ICE, margin: 0, isTextBox: true });
 
-pres.writeFile({ fileName: "slides.pptx" }).then(() => console.log("wrote slides.pptx"));
+pres.writeFile({ fileName: "../slides.pptx" }).then(() => console.log("wrote ../slides.pptx"));   // deliverable at the repo root

@@ -1,6 +1,6 @@
 """
 build_report_final.py -- The SUBMITTED report (<= 5 pages + references):
-report.md -> report.docx.  Every number is read from tables/*.csv.
+report.md -> ../report.docx (repo root).  Every number is read from tables/*.csv.
 
     python build_report_final.py
 
@@ -333,9 +333,9 @@ def build():
     assert "@@" not in md, re.findall(r"@@\w+@@", md)
     md = re.sub(r"\^([+\-*])", r"^{\1}", md)          # brace bare superscripts
     open("report.md", "w").write(md)
-    subprocess.run(["pandoc", "report.md", "-o", "report.docx",
+    subprocess.run(["pandoc", "report.md", "-o", "../report.docx",   # deliverable goes to the repo root
                     f"--reference-doc={reference_docx()}", "--resource-path=."], check=True)
-    print("wrote report.md, report.docx")
+    print("wrote report.md, ../report.docx")
 
 
 if __name__ == "__main__":

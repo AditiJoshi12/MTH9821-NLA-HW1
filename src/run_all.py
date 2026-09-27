@@ -1,8 +1,10 @@
 """
 run_all.py -- One command that reproduces every result, figure, the report
-(report.docx) and the slides (slides.pptx), in the order the assignment requires (all fitting and
+(../report.docx) and the slides (../slides.pptx),
+which are written to the repository root, in the order the assignment requires (all fitting and
 checkpoint selection finish before any final evaluation path is drawn).
 
+    cd src
     python run_all.py            # ~3-4 minutes on 2 CPU threads
     python run_all.py --no-docs  # skip report/slides (no pandoc / node needed)
 """

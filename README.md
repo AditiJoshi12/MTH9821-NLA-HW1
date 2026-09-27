@@ -3,17 +3,23 @@
 Baruch MFE, Scientific Computing in Finance, Fall 2026.
 Team: Aditi Joshi, Helen Siavelis, Jaskaran Kalra, William McDonnell.
 
-**Deliverables**
+**Deliverables (this folder)**
 
-* `report.docx` — the report (5 pages + references).
-* `slides.pptx` — the presentation.
-* `results.csv` — every reported number in long format: prices, 95% interval endpoints, boundary errors, ordering diagnostics, LS diagnostics, perturbation, validation, selected checkpoints, timings, and environment.
+* [`report.docx`](report.docx) — the report (5 pages + references).
+* [`slides.pptx`](slides.pptx) — the presentation.
+
+Everything else is in [`src/`](src):
+
+* code and notebooks;
+* `src/results.csv` — every reported number in long format: prices, 95% interval endpoints, boundary errors, ordering diagnostics, LS diagnostics, perturbation, validation, selected checkpoints, timings, and environment;
+* tables in `src/tables/`, figures in `src/figures/`, and saved fits in `src/fitted/`.
 
 ## Reproduce everything
 
 ```bash
-pip install -r requirements.txt
-python run_all.py            # ~3 min on 2 CPU threads; rebuilds tables/, figures/, fitted/, results.csv, report, slides
+pip install -r src/requirements.txt
+cd src
+python run_all.py            # ~3 min on 2 CPU threads; rebuilds src/tables, figures, fitted, results.csv, and ../report.docx, ../slides.pptx
 python run_all.py --no-docs  # skip report/slides (they need pandoc, python-docx, node + pptxgenjs)
 ```
 
@@ -28,7 +34,7 @@ python run_all.py --no-docs  # skip report/slides (they need pandoc, python-docx
 | 5 | `run_part5.py` | Part 5 independent evaluation, boundary accuracy, perturbation |
 | 6 | `build_report_final.py`, `deck_data.py`, `build_deck.js` | Report and slides, built from `tables/` |
 
-## Code map
+## Code map (all in `src/`)
 
 | Module | Role |
 |---|---|
@@ -44,7 +50,7 @@ python run_all.py --no-docs  # skip report/slides (they need pandoc, python-docx
 
 Walkthrough notebooks: `part1_walkthrough.ipynb`, `part23_walkthrough.ipynb`, `part4_walkthrough.ipynb`, `part5_walkthrough.ipynb`.
 
-Saved fits are in `fitted/`:
+Saved fits are in `src/fitted/`:
 
 * LS thresholds and every NN checkpoint boundary (`.npz`);
 * NN parameters (`.pt`);
@@ -58,4 +64,4 @@ Saved fits are in `fitted/`:
 
 ## Environment
 
-Python 3.11, NumPy 2.4, SciPy 1.17, pandas 3.0, PyTorch 2.14 (CPU), 2 CPU threads, no accelerator. See `requirements.txt` and `fitted/run_config*.json`.
+Python 3.11, NumPy 2.4, SciPy 1.17, pandas 3.0, PyTorch 2.14 (CPU), 2 CPU threads, no accelerator. See `src/requirements.txt` and `src/fitted/run_config*.json`.
