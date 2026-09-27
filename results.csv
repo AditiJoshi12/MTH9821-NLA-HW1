@@ -1,0 +1,415 @@
+section,case,N,delta,method,S0,metric,value
+p2_refinement,0.0,180.0,0.0,ref,,dV_spots[spatial dx/2],1.0518209331067396e-05
+p2_refinement,0.0,180.0,0.0,ref,,db[spatial dx/2],0.001079352573086112
+p2_refinement,0.0,180.0,0.0,ref,,dV_spots[spatial dx/4],1.3283884241488408e-05
+p2_refinement,0.0,180.0,0.0,ref,,db[spatial dx/4],0.0010203959672594465
+p2_refinement,0.0,180.0,0.0,ref,,dV_spots[time h/2 (substeps=2)],1.2076473154820633e-09
+p2_refinement,0.0,180.0,0.0,ref,,db[time h/2 (substeps=2)],1.4198067788129265e-07
+p2_refinement,0.0,180.0,0.0,ref,,dV_spots[time h/4 (substeps=4)],3.4626346234745142e-09
+p2_refinement,0.0,180.0,0.0,ref,,db[time h/4 (substeps=4)],4.259877215417873e-07
+p2_refinement,0.0,180.0,0.0,ref,,dV_spots[domain wider],0.0
+p2_refinement,0.0,180.0,0.0,ref,,db[domain wider],0.0
+p2_refinement,0.0,180.0,0.0,ref,,dV_spots[kernel tails n_sd=14],0.0
+p2_refinement,0.0,180.0,0.0,ref,,db[kernel tails n_sd=14],2.984279490192421e-13
+p2_refinement,1.0,180.0,0.0125,ref,,dV_spots[spatial dx/2],1.1956482783403999e-05
+p2_refinement,1.0,180.0,0.0125,ref,,db[spatial dx/2],0.001079352573086112
+p2_refinement,1.0,180.0,0.0125,ref,,dV_spots[spatial dx/4],1.5245213539571978e-05
+p2_refinement,1.0,180.0,0.0125,ref,,db[spatial dx/4],0.0010203959672594465
+p2_refinement,1.0,180.0,0.0125,ref,,dV_spots[time h/2 (substeps=2)],9.750866780677825e-10
+p2_refinement,1.0,180.0,0.0125,ref,,db[time h/2 (substeps=2)],1.4198067788129265e-07
+p2_refinement,1.0,180.0,0.0125,ref,,dV_spots[time h/4 (substeps=4)],2.708517854443926e-09
+p2_refinement,1.0,180.0,0.0125,ref,,db[time h/4 (substeps=4)],4.259877215417873e-07
+p2_refinement,1.0,180.0,0.0125,ref,,dV_spots[domain wider],0.0
+p2_refinement,1.0,180.0,0.0125,ref,,db[domain wider],0.0
+p2_refinement,1.0,180.0,0.0125,ref,,dV_spots[kernel tails n_sd=14],0.0
+p2_refinement,1.0,180.0,0.0125,ref,,db[kernel tails n_sd=14],1.1368683772161603e-12
+p2_refinement,2.0,360.0,0.0,ref,,dV_spots[spatial dx/2],1.1255457829761895e-05
+p2_refinement,2.0,360.0,0.0,ref,,db[spatial dx/2],0.0012610535198973594
+p2_refinement,2.0,360.0,0.0,ref,,dV_spots[spatial dx/4],1.4001554360376645e-05
+p2_refinement,2.0,360.0,0.0,ref,,db[spatial dx/4],0.0012589079961173866
+p2_refinement,2.0,360.0,0.0,ref,,dV_spots[time h/2 (substeps=2)],2.327391612766405e-09
+p2_refinement,2.0,360.0,0.0,ref,,db[time h/2 (substeps=2)],5.322891638570582e-07
+p2_refinement,2.0,360.0,0.0,ref,,dV_spots[time h/4 (substeps=4)],7.199730589491082e-09
+p2_refinement,2.0,360.0,0.0,ref,,db[time h/4 (substeps=4)],1.5968314812653261e-06
+p2_refinement,2.0,360.0,0.0,ref,,dV_spots[domain wider],0.0
+p2_refinement,2.0,360.0,0.0,ref,,db[domain wider],0.0
+p2_refinement,2.0,360.0,0.0,ref,,dV_spots[kernel tails n_sd=14],3.552713678800501e-15
+p2_refinement,2.0,360.0,0.0,ref,,db[kernel tails n_sd=14],5.400124791776761e-13
+p2_refinement,3.0,360.0,0.0125,ref,,dV_spots[spatial dx/2],1.3010343971942007e-05
+p2_refinement,3.0,360.0,0.0125,ref,,db[spatial dx/2],0.0011838997914423999
+p2_refinement,3.0,360.0,0.0125,ref,,dV_spots[spatial dx/4],1.6175408230623134e-05
+p2_refinement,3.0,360.0,0.0125,ref,,db[spatial dx/4],0.0011947210723661783
+p2_refinement,3.0,360.0,0.0125,ref,,dV_spots[time h/2 (substeps=2)],1.8070966945060718e-09
+p2_refinement,3.0,360.0,0.0125,ref,,db[time h/2 (substeps=2)],5.322891638570582e-07
+p2_refinement,3.0,360.0,0.0125,ref,,dV_spots[time h/4 (substeps=4)],5.7221676286189904e-09
+p2_refinement,3.0,360.0,0.0125,ref,,db[time h/4 (substeps=4)],1.5968314812653261e-06
+p2_refinement,3.0,360.0,0.0125,ref,,dV_spots[domain wider],0.0
+p2_refinement,3.0,360.0,0.0125,ref,,db[domain wider],0.0
+p2_refinement,3.0,360.0,0.0125,ref,,dV_spots[kernel tails n_sd=14],7.105427357601002e-15
+p2_refinement,3.0,360.0,0.0125,ref,,db[kernel tails n_sd=14],3.062439191126032e-12
+p2_martingale,0.0,180.0,0.0,,,z_(mean-theory)/se,0.11732009746830457
+p2_martingale,0.0,180.0,0.0,,,diff_dollars,0.014318252196787284
+p2_martingale,1.0,180.0,0.0125,,,z_(mean-theory)/se,0.6235766858711025
+p2_martingale,1.0,180.0,0.0125,,,diff_dollars,0.07339581158997532
+p2_martingale,2.0,360.0,0.0,,,z_(mean-theory)/se,1.9648976586926736
+p2_martingale,2.0,360.0,0.0,,,diff_dollars,0.24049376014531276
+p2_martingale,3.0,360.0,0.0125,,,z_(mean-theory)/se,0.22572589380247568
+p2_martingale,3.0,360.0,0.0125,,,diff_dollars,0.026601599804834564
+p3_ls_diagnostics,0.0,180.0,0.0,LS,,fallback_count,0
+p3_ls_diagnostics,0.0,180.0,0.0,LS,,multi_crossing_count,179
+p3_ls_diagnostics,0.0,180.0,0.0,LS,,capped_count,0
+p3_ls_diagnostics,0.0,180.0,0.0,LS,,replay_max_abs_diff,0.0
+p3_ls_diagnostics,1.0,180.0,0.0125,LS,,fallback_count,0
+p3_ls_diagnostics,1.0,180.0,0.0125,LS,,multi_crossing_count,142
+p3_ls_diagnostics,1.0,180.0,0.0125,LS,,capped_count,85
+p3_ls_diagnostics,1.0,180.0,0.0125,LS,,replay_max_abs_diff,0.0
+p3_ls_diagnostics,2.0,360.0,0.0,LS,,fallback_count,0
+p3_ls_diagnostics,2.0,360.0,0.0,LS,,multi_crossing_count,360
+p3_ls_diagnostics,2.0,360.0,0.0,LS,,capped_count,0
+p3_ls_diagnostics,2.0,360.0,0.0,LS,,replay_max_abs_diff,0.0
+p3_ls_diagnostics,3.0,360.0,0.0125,LS,,fallback_count,0
+p3_ls_diagnostics,3.0,360.0,0.0125,LS,,multi_crossing_count,264
+p3_ls_diagnostics,3.0,360.0,0.0125,LS,,capped_count,149
+p3_ls_diagnostics,3.0,360.0,0.0125,LS,,replay_max_abs_diff,0.0
+reference,0.0,180.0,0.0,ref,,source,own-solver
+reference,1.0,180.0,0.0125,ref,,source,own-solver
+reference,2.0,360.0,0.0,ref,,source,own-solver
+reference,3.0,360.0,0.0125,ref,,source,own-solver
+p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt0,58.50849736307489
+p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt400,58.5294535002886
+p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt800,58.5235218571282
+p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt1200,58.473927148888706
+p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt1600,58.52613571656651
+p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt2000,58.52089605164561
+p4_validation,0.0,180.0,0.0,NN,,val_mean_ckpt2400,58.53074256722506
+p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt0,58.40860868978373
+p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt400,58.36043848053535
+p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt800,58.38561198681897
+p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt1200,58.39039173231426
+p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt1600,58.39149793696428
+p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt2000,58.391834302622485
+p4_validation,1.0,180.0,0.0125,NN,,val_mean_ckpt2400,58.36679636662532
+p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt0,59.31085343420058
+p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt400,59.338199804150065
+p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt800,59.35273736786526
+p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt1200,59.346778985097224
+p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt1600,59.3622402015301
+p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt2000,59.361130265960256
+p4_validation,2.0,360.0,0.0,NN,,val_mean_ckpt2400,59.3656037651414
+p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt0,60.54850993884898
+p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt400,60.51129712381909
+p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt800,60.51378239930173
+p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt1200,60.53268659489298
+p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt1600,60.527518515799095
+p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt2000,60.501379618560804
+p4_validation,3.0,360.0,0.0125,NN,,val_mean_ckpt2400,60.506463998342824
+p4_selection,0.0,180.0,0.0,NN,,selected_checkpoint,2400.0
+p4_selection,0.0,180.0,0.0,NN,,val_mean_initial,58.50849736307489
+p4_selection,0.0,180.0,0.0,NN,,val_mean_selected,58.53074256722506
+timing,0.0,180.0,0.0,NN,,time_supervised_s,12.623436343000037
+timing,0.0,180.0,0.0,NN,,time_banks_s,0.1978247109999529
+timing,0.0,180.0,0.0,NN,,time_payoff_s,11.611254404000022
+timing,0.0,180.0,0.0,NN,,time_validation_s,0.020614368999986254
+p4_selection,1.0,180.0,0.0125,NN,,selected_checkpoint,0.0
+p4_selection,1.0,180.0,0.0125,NN,,val_mean_initial,58.40860868978373
+p4_selection,1.0,180.0,0.0125,NN,,val_mean_selected,58.40860868978373
+timing,1.0,180.0,0.0125,NN,,time_supervised_s,2.3884189580000452
+timing,1.0,180.0,0.0125,NN,,time_banks_s,0.1444427659999974
+timing,1.0,180.0,0.0125,NN,,time_payoff_s,15.006662608
+timing,1.0,180.0,0.0125,NN,,time_validation_s,0.02255709400003525
+p4_selection,2.0,360.0,0.0,NN,,selected_checkpoint,2400.0
+p4_selection,2.0,360.0,0.0,NN,,val_mean_initial,59.31085343420058
+p4_selection,2.0,360.0,0.0,NN,,val_mean_selected,59.3656037651414
+timing,2.0,360.0,0.0,NN,,time_supervised_s,1.2093623609999895
+timing,2.0,360.0,0.0,NN,,time_banks_s,0.2870260020000046
+timing,2.0,360.0,0.0,NN,,time_payoff_s,16.83736029900001
+timing,2.0,360.0,0.0,NN,,time_validation_s,0.03943887600001972
+p4_selection,3.0,360.0,0.0125,NN,,selected_checkpoint,0.0
+p4_selection,3.0,360.0,0.0125,NN,,val_mean_initial,60.54850993884898
+p4_selection,3.0,360.0,0.0125,NN,,val_mean_selected,60.54850993884898
+timing,3.0,360.0,0.0125,NN,,time_supervised_s,2.4983166929999925
+timing,3.0,360.0,0.0125,NN,,time_banks_s,0.24980798499996126
+timing,3.0,360.0,0.0125,NN,,time_payoff_s,20.663075632000073
+timing,3.0,360.0,0.0125,NN,,time_validation_s,0.05022160200007875
+timing,,,,,,evaluation_3_policies_s,6.799666931000047
+p5_prices,0.0,180.0,0.0,LS,60.0,mean,40.00000000000001
+p5_prices,0.0,180.0,0.0,LS,60.0,se,3.1776754930703254e-17
+p5_prices,0.0,180.0,0.0,LS,60.0,ci_lo,40.00000000000001
+p5_prices,0.0,180.0,0.0,LS,60.0,ci_hi,40.00000000000001
+p5_prices,0.0,180.0,0.0,LS,60.0,ref_value,39.99999808710686
+p5_prices,0.0,180.0,0.0,LS,60.0,z_vs_ref,
+p5_prices,0.0,180.0,0.0,NN,60.0,mean,39.130169834504194
+p5_prices,0.0,180.0,0.0,NN,60.0,se,0.03932294715581088
+p5_prices,0.0,180.0,0.0,NN,60.0,ci_lo,39.0530968580788
+p5_prices,0.0,180.0,0.0,NN,60.0,ci_hi,39.207242810929586
+p5_prices,0.0,180.0,0.0,NN,60.0,ref_value,39.99999808710686
+p5_prices,0.0,180.0,0.0,NN,60.0,z_vs_ref,-22.12011854442422
+p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,mean,40.00000000000001
+p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,se,3.1776754930703254e-17
+p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,ci_lo,40.00000000000001
+p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,ci_hi,40.00000000000001
+p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,ref_value,39.99999808710686
+p5_prices,0.0,180.0,0.0,ref-boundary policy,60.0,z_vs_ref,
+p5_prices,0.0,180.0,0.0,LS,80.0,mean,20.652572539907382
+p5_prices,0.0,180.0,0.0,LS,80.0,se,0.056087113543086445
+p5_prices,0.0,180.0,0.0,LS,80.0,ci_lo,20.542641797362933
+p5_prices,0.0,180.0,0.0,LS,80.0,ci_hi,20.76250328245183
+p5_prices,0.0,180.0,0.0,LS,80.0,ref_value,20.868801074662816
+p5_prices,0.0,180.0,0.0,LS,80.0,z_vs_ref,-3.8552266482625424
+p5_prices,0.0,180.0,0.0,NN,80.0,mean,20.583641203384946
+p5_prices,0.0,180.0,0.0,NN,80.0,se,0.05624309587133541
+p5_prices,0.0,180.0,0.0,NN,80.0,ci_lo,20.47340473547713
+p5_prices,0.0,180.0,0.0,NN,80.0,ci_hi,20.693877671292764
+p5_prices,0.0,180.0,0.0,NN,80.0,ref_value,20.868801074662816
+p5_prices,0.0,180.0,0.0,NN,80.0,z_vs_ref,-5.070131130943003
+p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,mean,20.843424246715774
+p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,se,0.044744065790320864
+p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,ci_lo,20.755725877766746
+p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,ci_hi,20.9311226156648
+p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,ref_value,20.868801074662816
+p5_prices,0.0,180.0,0.0,ref-boundary policy,80.0,z_vs_ref,-0.5671551634570428
+p5_prices,0.0,180.0,0.0,LS,100.0,mean,8.648360668052176
+p5_prices,0.0,180.0,0.0,LS,100.0,se,0.04971049853944782
+p5_prices,0.0,180.0,0.0,LS,100.0,ci_lo,8.550928090914859
+p5_prices,0.0,180.0,0.0,LS,100.0,ci_hi,8.745793245189493
+p5_prices,0.0,180.0,0.0,LS,100.0,ref_value,8.807848281690578
+p5_prices,0.0,180.0,0.0,LS,100.0,z_vs_ref,-3.208328589017089
+p5_prices,0.0,180.0,0.0,NN,100.0,mean,8.75978589885873
+p5_prices,0.0,180.0,0.0,NN,100.0,se,0.04642947406304139
+p5_prices,0.0,180.0,0.0,NN,100.0,ci_lo,8.668784129695169
+p5_prices,0.0,180.0,0.0,NN,100.0,ci_hi,8.850787668022292
+p5_prices,0.0,180.0,0.0,NN,100.0,ref_value,8.807848281690578
+p5_prices,0.0,180.0,0.0,NN,100.0,z_vs_ref,-1.0351696589668298
+p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,mean,8.773275916538966
+p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,se,0.044759323847837595
+p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,ci_lo,8.685547641797204
+p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,ci_hi,8.861004191280728
+p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,ref_value,8.807848281690578
+p5_prices,0.0,180.0,0.0,ref-boundary policy,100.0,z_vs_ref,-0.7724058850652863
+p5_prices,1.0,180.0,0.0125,LS,60.0,mean,40.00000000000001
+p5_prices,1.0,180.0,0.0125,LS,60.0,se,3.1776754930703254e-17
+p5_prices,1.0,180.0,0.0125,LS,60.0,ci_lo,40.00000000000001
+p5_prices,1.0,180.0,0.0125,LS,60.0,ci_hi,40.00000000000001
+p5_prices,1.0,180.0,0.0125,LS,60.0,ref_value,39.99999808710686
+p5_prices,1.0,180.0,0.0125,LS,60.0,z_vs_ref,
+p5_prices,1.0,180.0,0.0125,NN,60.0,mean,39.97102409715621
+p5_prices,1.0,180.0,0.0125,NN,60.0,se,0.009663178856738966
+p5_prices,1.0,180.0,0.0125,NN,60.0,ci_lo,39.952084266597005
+p5_prices,1.0,180.0,0.0125,NN,60.0,ci_hi,39.989963927715415
+p5_prices,1.0,180.0,0.0125,NN,60.0,ref_value,39.99999808710686
+p5_prices,1.0,180.0,0.0125,NN,60.0,z_vs_ref,-2.9983911485239645
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,mean,40.00000000000001
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,se,3.1776754930703254e-17
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,ci_lo,40.00000000000001
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,ci_hi,40.00000000000001
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,ref_value,39.99999808710686
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,60.0,z_vs_ref,
+p5_prices,1.0,180.0,0.0125,LS,80.0,mean,21.99713094681845
+p5_prices,1.0,180.0,0.0125,LS,80.0,se,0.0630192370836138
+p5_prices,1.0,180.0,0.0125,LS,80.0,ci_lo,21.873613242134567
+p5_prices,1.0,180.0,0.0125,LS,80.0,ci_hi,22.120648651502336
+p5_prices,1.0,180.0,0.0125,LS,80.0,ref_value,22.109546800048825
+p5_prices,1.0,180.0,0.0125,LS,80.0,z_vs_ref,-1.7838339280626438
+p5_prices,1.0,180.0,0.0125,NN,80.0,mean,22.00955886795517
+p5_prices,1.0,180.0,0.0125,NN,80.0,se,0.06267043962110903
+p5_prices,1.0,180.0,0.0125,NN,80.0,ci_lo,21.886724806297796
+p5_prices,1.0,180.0,0.0125,NN,80.0,ci_hi,22.132392929612546
+p5_prices,1.0,180.0,0.0125,NN,80.0,ref_value,22.109546800048825
+p5_prices,1.0,180.0,0.0125,NN,80.0,z_vs_ref,-1.5954560507020246
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,mean,22.0411697899575
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,se,0.059428681944716386
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,ci_lo,21.924689573345855
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,ci_hi,22.157650006569146
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,ref_value,22.109546800048825
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,80.0,z_vs_ref,-1.150572549378309
+p5_prices,1.0,180.0,0.0125,LS,100.0,mean,10.028705707402406
+p5_prices,1.0,180.0,0.0125,LS,100.0,se,0.05459419964062842
+p5_prices,1.0,180.0,0.0125,LS,100.0,ci_lo,9.921701076106773
+p5_prices,1.0,180.0,0.0125,LS,100.0,ci_hi,10.135710338698038
+p5_prices,1.0,180.0,0.0125,LS,100.0,ref_value,10.12640145873042
+p5_prices,1.0,180.0,0.0125,LS,100.0,z_vs_ref,-1.7894895789498972
+p5_prices,1.0,180.0,0.0125,NN,100.0,mean,10.033441533482476
+p5_prices,1.0,180.0,0.0125,NN,100.0,se,0.054537622125276866
+p5_prices,1.0,180.0,0.0125,NN,100.0,ci_lo,9.926547794116933
+p5_prices,1.0,180.0,0.0125,NN,100.0,ci_hi,10.140335272848018
+p5_prices,1.0,180.0,0.0125,NN,100.0,ref_value,10.12640145873042
+p5_prices,1.0,180.0,0.0125,NN,100.0,z_vs_ref,-1.7045100542595866
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,mean,10.086192739857738
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,se,0.052716572683791374
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,ci_lo,9.982868257397508
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,ci_hi,10.189517222317969
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,ref_value,10.12640145873042
+p5_prices,1.0,180.0,0.0125,ref-boundary policy,100.0,z_vs_ref,-0.7627339340488829
+p5_prices,2.0,360.0,0.0,LS,60.0,mean,40.00000000000001
+p5_prices,2.0,360.0,0.0,LS,60.0,se,3.1776754930703254e-17
+p5_prices,2.0,360.0,0.0,LS,60.0,ci_lo,40.00000000000001
+p5_prices,2.0,360.0,0.0,LS,60.0,ci_hi,40.00000000000001
+p5_prices,2.0,360.0,0.0,LS,60.0,ref_value,39.99999808710686
+p5_prices,2.0,360.0,0.0,LS,60.0,z_vs_ref,
+p5_prices,2.0,360.0,0.0,NN,60.0,mean,40.00000000000001
+p5_prices,2.0,360.0,0.0,NN,60.0,se,3.1776754930703254e-17
+p5_prices,2.0,360.0,0.0,NN,60.0,ci_lo,40.00000000000001
+p5_prices,2.0,360.0,0.0,NN,60.0,ci_hi,40.00000000000001
+p5_prices,2.0,360.0,0.0,NN,60.0,ref_value,39.99999808710686
+p5_prices,2.0,360.0,0.0,NN,60.0,z_vs_ref,
+p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,mean,40.00000000000001
+p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,se,3.1776754930703254e-17
+p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,ci_lo,40.00000000000001
+p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,ci_hi,40.00000000000001
+p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,ref_value,39.99999808710686
+p5_prices,2.0,360.0,0.0,ref-boundary policy,60.0,z_vs_ref,
+p5_prices,2.0,360.0,0.0,LS,80.0,mean,20.660365503883018
+p5_prices,2.0,360.0,0.0,LS,80.0,se,0.05362862436701869
+p5_prices,2.0,360.0,0.0,LS,80.0,ci_lo,20.55525340012366
+p5_prices,2.0,360.0,0.0,LS,80.0,ci_hi,20.765477607642374
+p5_prices,2.0,360.0,0.0,LS,80.0,ref_value,20.87099618699714
+p5_prices,2.0,360.0,0.0,LS,80.0,z_vs_ref,-3.927579452208707
+p5_prices,2.0,360.0,0.0,NN,80.0,mean,20.821539014504125
+p5_prices,2.0,360.0,0.0,NN,80.0,se,0.04247972217584675
+p5_prices,2.0,360.0,0.0,NN,80.0,ci_lo,20.738278759039467
+p5_prices,2.0,360.0,0.0,NN,80.0,ci_hi,20.904799269968784
+p5_prices,2.0,360.0,0.0,NN,80.0,ref_value,20.87099618699714
+p5_prices,2.0,360.0,0.0,NN,80.0,z_vs_ref,-1.1642536711582936
+p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,mean,20.849141524299743
+p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,se,0.04468686894448495
+p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,ci_lo,20.761555261168553
+p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,ci_hi,20.936727787430932
+p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,ref_value,20.87099618699714
+p5_prices,2.0,360.0,0.0,ref-boundary policy,80.0,z_vs_ref,-0.48906229533662543
+p5_prices,2.0,360.0,0.0,LS,100.0,mean,8.611665564953327
+p5_prices,2.0,360.0,0.0,LS,100.0,se,0.04921095172680803
+p5_prices,2.0,360.0,0.0,LS,100.0,ci_lo,8.515212099568783
+p5_prices,2.0,360.0,0.0,LS,100.0,ci_hi,8.70811903033787
+p5_prices,2.0,360.0,0.0,LS,100.0,ref_value,8.809147435127905
+p5_prices,2.0,360.0,0.0,LS,100.0,z_vs_ref,-4.0129658794426
+p5_prices,2.0,360.0,0.0,NN,100.0,mean,8.6884955500598
+p5_prices,2.0,360.0,0.0,NN,100.0,se,0.04568602414298945
+p5_prices,2.0,360.0,0.0,NN,100.0,ci_lo,8.59895094273954
+p5_prices,2.0,360.0,0.0,NN,100.0,ci_hi,8.77804015738006
+p5_prices,2.0,360.0,0.0,NN,100.0,ref_value,8.809147435127905
+p5_prices,2.0,360.0,0.0,NN,100.0,z_vs_ref,-2.6408926434588587
+p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,mean,8.714538430505707
+p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,se,0.04473117842053164
+p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,ci_lo,8.626865320801464
+p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,ci_hi,8.80221154020995
+p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,ref_value,8.809147435127905
+p5_prices,2.0,360.0,0.0,ref-boundary policy,100.0,z_vs_ref,-2.1150572813608752
+p5_prices,3.0,360.0,0.0125,LS,60.0,mean,40.00000000000001
+p5_prices,3.0,360.0,0.0125,LS,60.0,se,3.1776754930703254e-17
+p5_prices,3.0,360.0,0.0125,LS,60.0,ci_lo,40.00000000000001
+p5_prices,3.0,360.0,0.0125,LS,60.0,ci_hi,40.00000000000001
+p5_prices,3.0,360.0,0.0125,LS,60.0,ref_value,39.99999808710686
+p5_prices,3.0,360.0,0.0125,LS,60.0,z_vs_ref,
+p5_prices,3.0,360.0,0.0125,NN,60.0,mean,40.00000000000001
+p5_prices,3.0,360.0,0.0125,NN,60.0,se,3.1776754930703254e-17
+p5_prices,3.0,360.0,0.0125,NN,60.0,ci_lo,40.00000000000001
+p5_prices,3.0,360.0,0.0125,NN,60.0,ci_hi,40.00000000000001
+p5_prices,3.0,360.0,0.0125,NN,60.0,ref_value,39.99999808710686
+p5_prices,3.0,360.0,0.0125,NN,60.0,z_vs_ref,
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,mean,40.00000000000001
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,se,3.1776754930703254e-17
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,ci_lo,40.00000000000001
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,ci_hi,40.00000000000001
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,ref_value,39.99999808710686
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,60.0,z_vs_ref,
+p5_prices,3.0,360.0,0.0125,LS,80.0,mean,22.06972798810844
+p5_prices,3.0,360.0,0.0125,LS,80.0,se,0.06268570694720546
+p5_prices,3.0,360.0,0.0125,LS,80.0,ci_lo,21.946864002491917
+p5_prices,3.0,360.0,0.0125,LS,80.0,ci_hi,22.192591973724962
+p5_prices,3.0,360.0,0.0125,LS,80.0,ref_value,22.110202935072778
+p5_prices,3.0,360.0,0.0125,LS,80.0,z_vs_ref,-0.6456806333607459
+p5_prices,3.0,360.0,0.0125,NN,80.0,mean,22.065152525865397
+p5_prices,3.0,360.0,0.0125,NN,80.0,se,0.06248689241167412
+p5_prices,3.0,360.0,0.0125,NN,80.0,ci_lo,21.942678216738514
+p5_prices,3.0,360.0,0.0125,NN,80.0,ci_hi,22.18762683499228
+p5_prices,3.0,360.0,0.0125,NN,80.0,ref_value,22.110202935072778
+p5_prices,3.0,360.0,0.0125,NN,80.0,z_vs_ref,-0.7209577475957843
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,mean,22.109861887676665
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,se,0.05967786207496678
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,ci_lo,21.99289327800973
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,ci_hi,22.2268304973436
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,ref_value,22.110202935072778
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,80.0,z_vs_ref,-0.005714805863589655
+p5_prices,3.0,360.0,0.0125,LS,100.0,mean,10.073331538914644
+p5_prices,3.0,360.0,0.0125,LS,100.0,se,0.055008900035910004
+p5_prices,3.0,360.0,0.0125,LS,100.0,ci_lo,9.965514094844261
+p5_prices,3.0,360.0,0.0125,LS,100.0,ci_hi,10.181148982985027
+p5_prices,3.0,360.0,0.0125,LS,100.0,ref_value,10.126959105954446
+p5_prices,3.0,360.0,0.0125,LS,100.0,z_vs_ref,-0.9748889180622418
+p5_prices,3.0,360.0,0.0125,NN,100.0,mean,10.072562251762447
+p5_prices,3.0,360.0,0.0125,NN,100.0,se,0.05494417322482825
+p5_prices,3.0,360.0,0.0125,NN,100.0,ci_lo,9.964871672241783
+p5_prices,3.0,360.0,0.0125,NN,100.0,ci_hi,10.180252831283111
+p5_prices,3.0,360.0,0.0125,NN,100.0,ref_value,10.126959105954446
+p5_prices,3.0,360.0,0.0125,NN,100.0,z_vs_ref,-0.9900386337494025
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,mean,10.094785130937659
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,se,0.05282809740103895
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,ci_lo,9.991242060031622
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,ci_hi,10.198328201843696
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,ref_value,10.126959105954446
+p5_prices,3.0,360.0,0.0125,ref-boundary policy,100.0,z_vs_ref,-0.6090314927024948
+p5_boundary_error,0.0,180.0,0.0,LS,,E_mean,0.06513199625008786
+p5_boundary_error,0.0,180.0,0.0,LS,,E_max,0.16484826224298843
+p5_boundary_error,0.0,180.0,0.0,NN,,E_mean,0.07787322609862896
+p5_boundary_error,0.0,180.0,0.0,NN,,E_max,0.22933978219716836
+p5_boundary_error,1.0,180.0,0.0125,LS,,E_mean,0.032329406862011204
+p5_boundary_error,1.0,180.0,0.0125,LS,,E_max,0.23459989098369932
+p5_boundary_error,1.0,180.0,0.0125,NN,,E_mean,0.01946860479405345
+p5_boundary_error,1.0,180.0,0.0125,NN,,E_max,0.1646658580724346
+p5_boundary_error,2.0,360.0,0.0,LS,,E_mean,0.0554843825560065
+p5_boundary_error,2.0,360.0,0.0,LS,,E_max,0.1994691267945288
+p5_boundary_error,2.0,360.0,0.0,NN,,E_mean,0.023440816819711663
+p5_boundary_error,2.0,360.0,0.0,NN,,E_max,0.16637015628090268
+p5_boundary_error,3.0,360.0,0.0125,LS,,E_mean,0.04672941463558256
+p5_boundary_error,3.0,360.0,0.0125,LS,,E_max,0.3879414662660715
+p5_boundary_error,3.0,360.0,0.0125,NN,,E_mean,0.042856086395913484
+p5_boundary_error,3.0,360.0,0.0125,NN,,E_max,0.22949872319742157
+p5_N_effect,,,,,,E_mean_ref360_vs_ref180[delta=0.0],0.0025615232575963444
+p5_N_effect,,,,,,E_mean_ref360_vs_ref180[delta=0.0125],0.0007836086741124687
+p1_ordering_checks,,,,LS,,A[N=180],0
+p1_ordering_checks,,,,LS,,B[N=180],0.0
+p1_ordering_checks,,,,LS,,F[N=180],0.20038442594039452
+p1_ordering_checks,,,,NN,,A[N=180],32
+p1_ordering_checks,,,,NN,,B[N=180],0.13375762359088242
+p1_ordering_checks,,,,NN,,F[N=180],0.150713675348383
+p1_ordering_checks,,,,ref,,A[N=180],0
+p1_ordering_checks,,,,ref,,B[N=180],0.0
+p1_ordering_checks,,,,ref,,F[N=180],0.0
+p1_ordering_checks,,,,ref: max (V0 - V0.0125)^+ $,,A[N=180],
+p1_ordering_checks,,,,ref: max (V0 - V0.0125)^+ $,,B[N=180],
+p1_ordering_checks,,,,ref: max (V0 - V0.0125)^+ $,,F[N=180],0.0
+p1_ordering_checks,,,,LS,,A[N=360],0
+p1_ordering_checks,,,,LS,,B[N=360],0.0
+p1_ordering_checks,,,,LS,,F[N=360],0.10282415376893539
+p1_ordering_checks,,,,NN,,A[N=360],0
+p1_ordering_checks,,,,NN,,B[N=360],0.0
+p1_ordering_checks,,,,NN,,F[N=360],0.05608037915437976
+p1_ordering_checks,,,,ref,,A[N=360],0
+p1_ordering_checks,,,,ref,,B[N=360],0.0
+p1_ordering_checks,,,,ref,,F[N=360],0.0
+p1_ordering_checks,,,,ref: max (V0 - V0.0125)^+ $,,A[N=360],
+p1_ordering_checks,,,,ref: max (V0 - V0.0125)^+ $,,B[N=360],
+p1_ordering_checks,,,,ref: max (V0 - V0.0125)^+ $,,F[N=360],0.0
+p5_perturbation,3.0,360.0,0.0125,NN,100.0,mean_diff[a=-0.02],-0.019139608872427185
+p5_perturbation,3.0,360.0,0.0125,NN,100.0,se_diff[a=-0.02],0.008065976977588938
+p5_perturbation,3.0,360.0,0.0125,NN,100.0,mean_diff[a=0.0],0.0
+p5_perturbation,3.0,360.0,0.0125,NN,100.0,se_diff[a=0.0],0.0
+p5_perturbation,3.0,360.0,0.0125,NN,100.0,mean_diff[a=0.02],0.004608524979125886
+p5_perturbation,3.0,360.0,0.0125,NN,100.0,se_diff[a=0.02],0.009036048999081312
+timing_eval,0.0,180.0,0.0,,,evaluation_3_policies_s,1.1073838060000298
+timing_eval,1.0,180.0,0.0125,,,evaluation_3_policies_s,1.1086659559999816
+timing_eval,2.0,360.0,0.0,,,evaluation_3_policies_s,2.2453691169999956
+timing_eval,3.0,360.0,0.0125,,,evaluation_3_policies_s,2.5066619389999687
+timing_eval,3.0,360.0,0.0125,,,perturbation_s,2.371419438000089
+environment,,,,,,python,3.11.15
+environment,,,,,,numpy,2.4.4
+environment,,,,,,scipy,1.17.1
+environment,,,,,,pandas,3.0.2
+environment,,,,,,torch,2.14.0+cu130
+environment,,,,,,cpu_threads,2
+environment,,,,,,machine,x86_64
+environment,,,,,,processor,x86_64
+environment,,,,,,accelerator,none (CPU)
+environment,,,,,,precision_sim_eval,float64
+environment,,,,,,precision_nn_training,float32
+environment,,,,,,reference_source,own-solver

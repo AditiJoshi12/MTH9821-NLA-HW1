@@ -1,0 +1,5 @@
+case,N,delta,fallback_count,multi_crossing_count,capped_count,max_crossings,replay_max_abs_diff,train_mean_Y_insample
+0,180,0.0,0,179,0,2,0.0,59.852974564054975
+1,180,0.0125,0,142,85,2,0.0,60.22227838032471
+2,360,0.0,0,360,0,2,0.0,59.933979353866214
+3,360,0.0125,0,264,149,2,0.0,59.911359424329135

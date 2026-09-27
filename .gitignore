@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+# working notes built by build_report.py (not part of the submission)
+report_extended.md
+report_extended.docx

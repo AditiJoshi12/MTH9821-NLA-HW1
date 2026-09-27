@@ -1,0 +1,49 @@
+{
+  "torch": "2.14.0+cu130",
+  "numpy": "2.4.4",
+  "python": "3.11.15",
+  "torch_threads": 2,
+  "cpu_count": 2,
+  "device": "cpu (no accelerator; nothing to synchronise when timing)",
+  "training_dtype": "float32",
+  "validation_evaluation_dtype": "float64",
+  "seeds": {
+    "torch_construction": "5000+c",
+    "train_bank": "2000+c",
+    "val_bank": "3000+c"
+  },
+  "bank_draw_order_ASSUMED": "J, then S_J ~ A, then (n, N) normals; see nn_policy.py",
+  "selected": {
+    "0": 2400,
+    "1": 0,
+    "2": 2400,
+    "3": 0
+  },
+  "timings": {
+    "0": {
+      "supervised_s": 12.623436343000037,
+      "banks_s": 0.1978247109999529,
+      "payoff_s": 11.611254404000022,
+      "validation_s": 0.020614368999986254
+    },
+    "1": {
+      "supervised_s": 2.3884189580000452,
+      "banks_s": 0.1444427659999974,
+      "payoff_s": 15.006662608,
+      "validation_s": 0.02255709400003525
+    },
+    "2": {
+      "supervised_s": 1.2093623609999895,
+      "banks_s": 0.2870260020000046,
+      "payoff_s": 16.83736029900001,
+      "validation_s": 0.03943887600001972
+    },
+    "3": {
+      "supervised_s": 2.4983166929999925,
+      "banks_s": 0.24980798499996126,
+      "payoff_s": 20.663075632000073,
+      "validation_s": 0.05022160200007875
+    }
+  },
+  "evaluation_s": 6.799666931000047
+}
