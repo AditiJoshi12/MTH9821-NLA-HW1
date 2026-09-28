@@ -1,3 +1,4 @@
+# Core packages only. For notebooks and report builders use ../requirements.txt
 numpy==2.4.4
 scipy==1.17.1
 pandas==3.0.2

@@ -17,7 +17,7 @@ Everything else is in [`src/`](src):
 ## Reproduce everything
 
 ```bash
-pip install -r src/requirements.txt
+pip install -r requirements.txt
 cd src
 python run_all.py            # ~3 min on 2 CPU threads; rebuilds src/tables, figures, fitted, results.csv, and ../report.docx, ../slides.pptx
 python run_all.py --no-docs  # skip report/slides (they need pandoc, python-docx, node + pptxgenjs)
@@ -71,4 +71,4 @@ Saved fits are in `src/fitted/`:
 
 ## Environment
 
-Python 3.11, NumPy 2.4, SciPy 1.17, pandas 3.0, PyTorch 2.14 (CPU), 2 CPU threads, no accelerator. See `src/requirements.txt` and `src/fitted/run_config*.json`.
+Python 3.11, NumPy 2.4, SciPy 1.17, pandas 3.0, PyTorch 2.14 (CPU), 2 CPU threads, no accelerator. See `requirements.txt` and `src/fitted/run_config*.json`.

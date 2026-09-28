@@ -1,0 +1,23 @@
+# MTH 9821 Assignment 1 -- Python packages
+# Tested with Python 3.11 (the supplied reference README says 3.12).
+# Install everything:   pip install -r requirements.txt
+# Then reproduce:       cd src && python run_all.py
+
+# --- Core: needed by run_all.py (Parts 1-5, results.csv, figures) ---
+numpy==2.4.4
+scipy==1.17.1
+pandas==3.0.2
+matplotlib==3.10.9
+torch==2.14.0          # CPU is enough; Part 4 boundary networks
+
+# --- Walkthrough notebooks (src/*.ipynb) and their builders ---
+jupyter
+nbformat==5.11.1
+nbclient==0.11.0
+ipykernel==7.3.0
+Pillow==12.2.0
+
+# --- Report builder (src/build_report_final.py) ---
+python-docx==1.2.0
+# Not pip packages, only needed to rebuild report.docx / slides.pptx:
+#   pandoc, Node.js + pptxgenjs (npm install pptxgenjs)
