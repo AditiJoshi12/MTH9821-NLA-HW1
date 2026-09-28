@@ -27,12 +27,12 @@
     "processor": "x86_64"
   },
   "timings_seconds": {
-    "part2_reference_check_s": 9.03628155300001,
-    "ls_fit_case0_s": 0.4835286409999924,
-    "ls_fit_case1_s": 0.4932067379999978,
-    "ls_fit_case2_s": 1.008658827000005,
-    "ls_fit_case3_s": 1.1020246070000042,
-    "ls_total_s": 4.580786584000009,
-    "evaluation_preview_s": 5.091685950999988
+    "part2_reference_check_s": 8.752575359000005,
+    "ls_fit_case0_s": 0.49386619900000994,
+    "ls_fit_case1_s": 0.5650814619999949,
+    "ls_fit_case2_s": 1.0619663150000065,
+    "ls_fit_case3_s": 1.1501821709999973,
+    "ls_total_s": 4.825232167999999,
+    "evaluation_preview_s": 5.133451518000001
   }
 }

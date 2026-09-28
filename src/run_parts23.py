@@ -148,6 +148,9 @@ for N, (cn, cd) in ((180, (0, 1)), (360, (2, 3))):
     ord_rows.append(dict(N=N, method="ref: max (V0 - V0.0125)^+ $", A=np.nan, B=np.nan, F=mx))
 pd.DataFrame(ord_rows).to_csv("tables/p1_ordering_checks.csv", index=False)
 
+for k, v in timings.items():                     # training / evaluation times (Parts 2-3)
+    c = int(k[len("ls_fit_case")]) if k.startswith("ls_fit_case") else None
+    put("timing_ls", k, v, c, "LS" if k.startswith("ls") else None)
 pd.DataFrame(RESULTS).to_csv("results.csv", index=False)
 
 # ------------------------------------------------------------- figures

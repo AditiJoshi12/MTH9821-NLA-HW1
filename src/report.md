@@ -22,7 +22,7 @@ $$V_\delta(t,s)\ge e^{-r\varepsilon}\big(K-(1-\delta)se^{r\varepsilon}\big)=Ke^{
 
 If $s$ is in the exercise region, $K-s\ge Ke^{-r\varepsilon}-(1-\delta)s$, i.e. $s\le K(1-e^{-r\varepsilon})/\delta$. Hence $b_\delta(d_k-\varepsilon)\le K(1-e^{-r\varepsilon})/\delta\approx Kr\varepsilon/\delta\to0$.
 
-*Grid version.* The dividend date is itself an exercise date, so stopping there is an admissible grid stopping time and the same bound holds with $\varepsilon=(j_d-j)h$. The reference satisfies the lower bound at every node.
+*Grid version.* The dividend date is itself an exercise date, so stopping there is an admissible grid stopping time and the same bound holds with $\varepsilon=(j_d-j)h$. Our cross-check solver's full value surface satisfies the lower bound at every node.
 
 *Proximity depends on $s$.* A fixed $s$ is never exercised when $\varepsilon<\varepsilon^{*}(s)=-r^{-1}\log(1-\delta s/K)\approx\delta s/(rK)$: about 9 days at $s=10$ and 75 days at $s=80$.
 
@@ -107,7 +107,7 @@ We follow the specified recursion: a cubic regression in $x=S_j/K$ on in-the-mon
 * **Warm start:** 1,000 supervised Adam steps towards $\hat b^{LS}$.
 * **Payoff stage:** 2,400 Adam steps on the smoothed payoff, with batches of 512 from 8,192 random-start paths.
 * **Precision:** training in float32; validation in float64.
-* **Cost:** 5 s supervised plus 41 s payoff training for all four cases, with 2 CPU threads, 1 inter-op thread and deterministic algorithms (README settings).
+* **Cost:** 4 s supervised plus 41 s payoff training for all four cases, with 2 CPU threads, 1 inter-op thread and deterministic algorithms (README settings).
 
 **Randomised stopping.** If the holder has not yet stopped, they stop at $t_j$ with probability $p_j$, independently of the future. Then $w_j=p_j\prod_{k<j}(1-p_k)$ is the probability of stopping *first* at $t_j$, and $\sum_jw_j=1$ because $p_N=1$. So $R_\theta$ is the path-conditional expectation of the discounted payoff under this randomised rule. It is smooth in $\theta$, and it tends to the hard rule as $\epsilon\to0$; with $\epsilon=10^{-7}$ it matches the hard rule to within $10^{-6}$ \$.
 

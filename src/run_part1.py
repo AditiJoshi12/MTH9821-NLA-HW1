@@ -38,6 +38,7 @@ P.fig_boundaries("figures/p1_boundaries.png")
 P.fig_cap_zoom("figures/p1_cap_zoom.png")
 P.fig_proximity("figures/p1_proximity.png")
 P.fig_pre_jump("figures/p1_pre_jump.png")
+P.split_panels("figures/p1_pre_jump.png")        # put / call panels for the slides
 
 print(f"\nTotal time {time.perf_counter()-t0:.1f}s | Python {platform.python_version()} "
       f"| NumPy {np.__version__} | SciPy {scipy.__version__} | matplotlib {matplotlib.__version__} "

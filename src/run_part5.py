@@ -69,7 +69,7 @@ def main():
     # results.csv: replace every section this script owns ----------------------
     res = pd.read_csv("results.csv")
     owned = ["p5_prices", "p5_prices_preview", "p5_boundary_error", "p5_boundary_error_preview",
-             "p1_ordering_checks", "p5_perturbation", "p5_N_effect", "environment", "timing_eval"]
+             "p1_ordering_checks", "p5_perturbation", "p5_N_effect", "environment", "timing_eval"]  # timing_ls is kept
     res = res[~res.section.isin(owned)]
     new = []
 

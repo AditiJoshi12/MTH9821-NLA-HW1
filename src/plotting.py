@@ -172,3 +172,18 @@ def fig_pre_jump(path, N=180):
     fig.tight_layout()
     fig.savefig(path, dpi=160)
     plt.close(fig)
+
+
+def split_panels(path, n=2):
+    """Save each of the n side-by-side panels of a saved figure as its own
+    PNG (path_panel1.png, ...), for slides that show one panel at a time."""
+    from PIL import Image
+    im = Image.open(path)
+    w, h = im.size
+    stem = path[:-4]
+    out = []
+    for i in range(n):
+        p = f"{stem}_panel{i + 1}.png"
+        im.crop((i * w // n, 0, (i + 1) * w // n, h)).save(p)
+        out.append(p)
+    return out

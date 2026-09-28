@@ -76,44 +76,132 @@ s.addText("Dividends at d = 5/24, 11/24, 17/24 (plot markers u = T − t = 13/24
   { x: 0.5, y: 4.3, w: 9, h: 0.6, fontFace: BF, fontSize: 13, color: INK, margin: 0, isTextBox: true });
 s.addNotes("All numbers use the risk-neutral measure. Calendar time runs right to left on every boundary plot because the horizontal axis is time remaining.");
 
-// ---- 3. Item 1 & 4: order of dividend and exercise --------------------------
-s = pres.addSlide();
-title(s, "Put: jump first. Call: decide first.", "Part 1, items 1 and 4 — which side of the dividend to exercise on");
-img(s, "figures/p1_pre_jump.png", 0.5, 1.35, 5.9, 1440, 528);
-bullets(s, [
-  "Put: V(d⁻, s) = V(d⁺, (1−δ)s) ≥ (K − s) + δs, so pre-jump exercise is never optimal.",
-  "Call: C(d⁻, s) = max{(s−K)⁺, C(d⁺, (1−δ)s)}; the max binds above s* (104.8 before d₃).",
-  `Call value at S₀=100: correct ${fmt(D.call[3]["C(0,100)"])}, put-style ordering ${fmt(D.call[1]["C(0,100)"])}, European ${fmt(D.call[0]["C(0,100)"])}.`,
-], 6.6, 1.35, 2.95, 3.6, 12);
-footer(s, "Our own grid solver (Part 1 illustration), N = 180, δ = 0.0125. The put-style call exercises one grid step early and loses interest K(1 − e^(−rh)).");
-s.addNotes("For the put, exercising just after the jump pays delta*s more with no time elapsed. For the call the intrinsic value falls at the jump, so the call must test exercise before applying the dividend.");
+// ---- helper for Part 1: a card of equation lines ---------------------------
+function eqCard(slide, heading, lines, x, y, w, h, size = 13) {
+  card(slide, x, y, w, h);
+  const runs = [{ text: heading, options: { bold: true, color: NAVY, fontFace: HF, fontSize: size + 2, breakLine: true } }];
+  lines.forEach((l, i) => runs.push({ text: l, options: { breakLine: i < lines.length - 1, color: INK } }));
+  slide.addText(runs, { x: x + 0.15, y: y + 0.1, w: w - 0.3, h: h - 0.2, fontFace: BF, fontSize: size,
+    valign: "top", paraSpaceAfter: 5, margin: 0, isTextBox: true });
+}
+const P1 = (t) => "Part 1 · " + t;
 
-// ---- 4. Item 2: the cap ----------------------------------------------------
+// ---- 3. Part 1: what we explain ---------------------------------------------
 s = pres.addSlide();
-title(s, "Near a dividend, the boundary rides the cap", "Part 1, item 2 — b(d − ε) ≤ K(1 − e^(−rε)) / δ → 0");
-img(s, "figures/p1_cap_zoom.png", 0.5, 1.35, 9, 1600, 528);
-stat(s, "≈ 3.9 K / yr", "slope rK/δ of the straight segments in Cox–Rubinstein's figure", 0.5, 4.4 - 0.35, 2.9, ORANGE);
-stat(s, "1.63 → 0.81", "one-step cap K(1−e^(−rh))/δ, N = 180 → 360: positive, → 0 with h", 3.55, 4.05, 2.9);
-stat(s, "0.69, 0.75, 0.89 K", "b just after d₁, d₂, d₃: the upward jump in calendar time", 6.6, 4.05, 2.9, NAVY, 22);
-s.addNotes("Waiting until d+ and exercising gives V >= K e^{-r eps} - (1-delta) s. For small s exercise at d+ is nearly certain, so the bound is attained: the boundary lies on the cap for about 0.13 years before each dividend.");
+title(s, "What Part 1 explains", P1("the shape of the exercise boundary in Cox & Rubinstein's Fig. 5-37"));
+img(s, "figures/p1_boundaries.png", 0.5, 1.3, 6.2, 1440, 576);
+eqCard(s, "Read the plot", [
+  "Horizontal axis u = T − t: calendar time advances RIGHT → LEFT.",
+  "δ = 0: smooth curve rising to K at maturity.",
+  "δ = 1.25%: boundary drops to ≈ 0 just before each dividend (right of each dotted line) …",
+  "… rises along a straight line as u grows …",
+  "… and jumps UP right after the dividend (left of the line).",
+], 6.9, 1.3, 2.6, 3.7, 11);
+footer(s, "Our grid solver, N = 360 (solid) and 180 (dashed); it agrees with the supplied reference to ≈1e-3 $ in the boundary.");
+s.addNotes("Start here: everything in Part 1 explains these features. Stress the axis direction first; the dividend is paid when calendar time crosses a dotted line from right to left.");
 
-// ---- 5. Item 3: ordering -----------------------------------------------------
+// ---- 4. Item 1 -------------------------------------------------------------------
 s = pres.addSlide();
-title(s, "Dividends can only help the put", "Part 1, item 3 — V₀.₀₁₂₅ ≥ V₀ and b₀.₀₁₂₅ ≤ b₀, equal after d₃");
-const steps = ["Couple: same Brownian increments, S^δ = S⁰(1−δ)^n ≤ S⁰",
-               "Common stopping time τ ⇒ (K − S^δ_τ)⁺ ≥ (K − S⁰_τ)⁺ on every path",
-               "Take expectations, then sup over τ ⇒ V_δ ≥ V₀",
-               "V_δ = K − s ⇒ V₀ = K − s: exercise regions nested ⇒ b_δ ≤ b₀"];
+title(s, "Item 1 · Never exercise the put just before the jump", P1("V(d⁻, s) = V(d⁺, (1 − δ)s)"));
+eqCard(s, "Argument", [
+  "Just before the jump: exercise (K − s)⁺, or hold through it.",
+  "No time passes from d⁻ to d⁺ and the put gets no dividend, so holding is worth V(d⁺, (1 − δ)s).",
+  "⇒ V(d⁻, s) = max{ (K − s)⁺ , V(d⁺, (1 − δ)s) }.",
+  "Exercise just after the jump is always possible:",
+  "V(d⁺, (1 − δ)s) ≥ K − (1 − δ)s = (K − s) + δs > K − s.",
+  "⇒ the max is always the second term: the identity.",
+  "Before vs after: after pays δs more, with no interest lost ⇒ apply the jump, then decide.",
+], 0.5, 1.3, 5.0, 3.8, 12);
+img(s, "figures/p1_pre_jump_panel1.png", 5.7, 1.3, 3.8, 720, 528);
+s.addText("At d₃ the gap V(d⁻,s) − (K − s) equals δs exactly wherever the put is exercised at d⁺ (s ≲ 90).",
+  { x: 5.7, y: 4.2, w: 3.8, h: 0.8, fontFace: BF, fontSize: 10.5, color: MUTED, margin: 0, valign: "top", isTextBox: true });
+s.addNotes("One-line version: exercising after the drop pays delta times s more, and no time passes, so there is no interest cost. Hence pre-jump exercise is dominated and the code can apply the jump first.");
+
+// ---- 5. Item 2 derivation ----------------------------------------------------
+s = pres.addSlide();
+title(s, "Item 2 · Why b falls to zero before a dividend", P1("b(d − ε) ≤ K(1 − e^(−rε)) / δ"));
+eqCard(s, "Lower bound (wait, then exercise)", [
+  "t = d_k − ε, after d_{k−1}: no dividend in (t, d_k).",
+  "Strategy: wait until d_k⁺ and exercise. Using (x)⁺ ≥ x and E[S_{d⁻} | S_t = s] = s e^{rε}:",
+  "V(t, s) ≥ e^{−rε} E[K − (1 − δ)S_{d⁻}] = K e^{−rε} − (1 − δ)s.",
+], 0.5, 1.3, 4.4, 2.1, 12);
+eqCard(s, "Cap on the boundary", [
+  "If s is in the exercise region, V = K − s, so",
+  "K − s ≥ K e^{−rε} − (1 − δ)s  ⇔  δs ≤ K(1 − e^{−rε}).",
+  "⇒ b(d − ε) ≤ K(1 − e^{−rε})/δ ≈ K r ε / δ → 0 as ε ↓ 0.",
+], 5.1, 1.3, 4.4, 2.1, 12);
+eqCard(s, "Same bound on the exercise grid", [
+  "d_k = t_{j_d} is itself an exercise date, so 'stop at t_{j_d} after the jump' is an admissible grid stopping time from t_j < t_{j_d}.",
+  "The same computation gives the bound with ε = (j_d − j)h.",
+], 0.5, 3.6, 9, 1.4, 12);
+s.addNotes("Economics: exercising now earns interest on K; waiting captures the drop delta*s. Exercise only pays if delta*s <= K(1-e^{-r eps}). As eps goes to 0 the interest term vanishes, so nothing positive can be exercised.");
+
+// ---- 6. Item 2 consequences ------------------------------------------------------
+s = pres.addSlide();
+title(s, "Item 2 · What the bound implies", P1("proximity, grid distance, the jump and the maturity limit"));
+img(s, "figures/p1_cap_zoom.png", 0.8, 1.2, 8.4, 1600, 528);
+const prox = D.proximity.find(p => p.s === 80), prox10 = D.proximity.find(p => p.s === 10);
+stat(s, `ε* ≈ δs/(rK)`, `no exercise within ε*(s): ${prox10.eps_star_days.toFixed(0)} days (s=10), ${prox.eps_star_days.toFixed(0)} (s=80)`, 0.5, 4.12, 2.15, ORANGE, 18);
+stat(s, "1.63 → 0.81", "cap one step before: > 0 on the grid, → 0 linearly in h", 2.78, 4.12, 2.15, NAVY, 20);
+stat(s, "0.69 · 0.75 · 0.89 K", "upward jump just after d₁, d₂, d₃ (calendar time)", 5.06, 4.12, 2.15, NAVY, 16);
+stat(s, `→ K`, `after d₃ (no dividend left, r > 0) b → K at maturity`, 7.34, 4.12, 2.15, BLUE, 20);
+s.addNotes("Proximity depends on s: for fixed s, delta*s beats K(1-e^{-r eps}) once eps < eps*(s) ~ delta*s/(rK), so smaller prices must be closer to the dividend. The bound is a function of s and eps only, which makes this precise. A positive boundary one grid step before the dividend is compatible with the zero limit because on a grid eps >= h. Near the dividend the boundary sits ON the cap (the bound is attained because exercise at d+ is almost certain for small s): these are the straight lines of slope rK/delta ~ 3.9K per year in Cox-Rubinstein. After the dividend the next one is far away, so the incentive to wait disappears and the boundary jumps up. After d3 the boundary tends to K at maturity, as in the delta = 0 curve of Cox-Rubinstein Fig. 5-37.");
+
+// ---- 7. Item 3 ----------------------------------------------------------------------
+s = pres.addSlide();
+title(s, "Item 3 · Dividends can only help the put", P1("V₀.₀₁₂₅ ≥ V₀ and b₀.₀₁₂₅ ≤ b₀, with equality from d₃ on"));
+const steps = ["Couple: same Brownian increments from (t_j, s): S^δ_i = S⁰_i (1−δ)^{n_ji} ≤ S⁰_i  (n_ji = dividends in (t_j, t_i])",
+               "Same information ⇒ same stopping times. Common τ ⇒ (K − S^δ_τ)⁺ ≥ (K − S⁰_τ)⁺ on every path",
+               "Take discounted expectations, then sup over τ ⇒ V_δ(t_j, s) ≥ V₀(t_j, s)",
+               "If V_δ = K − s then K − s = V_δ ≥ V₀ ≥ K − s ⇒ V₀ = K − s: E_δ ⊆ E₀ ⇒ b_δ ≤ b₀",
+               "t_j ≥ d₃ (incl. d₃ at the same post-jump s): no dividend left ⇒ identical problems"];
 steps.forEach((t, i) => {
-  const y = 1.4 + i * 0.8;
+  const y = 1.3 + i * 0.74;
   badge(s, i + 1, 0.5, y);
-  s.addText(t, { x: 1.05, y: y - 0.05, w: 4.6, h: 0.55, fontFace: BF, fontSize: 13, color: INK,
+  s.addText(t, { x: 1.05, y: y - 0.1, w: 4.75, h: 0.62, fontFace: BF, fontSize: 11.5, color: INK,
     valign: "middle", margin: 0, isTextBox: true });
 });
-stat(s, "0 %", `paths with Q_δ < Q₀ under one common τ (coupled MC, 20,000 paths)`, 6.0, 1.35, 3.5, BLUE);
-stat(s, `${(D.mc[1].frac_paths_Qd_lt_Q0 * 100).toFixed(1)} %`, "paths violating it when each model uses its own stopping rule", 6.0, 2.65, 3.5, ORANGE);
-stat(s, "A = B = F = 0", "reference ordering diagnostics, N = 180 and 360", 6.0, 3.95, 3.5);
-s.addNotes("The second stat shows why the proof fixes a common stopping time before comparing payoffs. The reference diagnostics are exact zeros; after d3 the two problems are identical.");
+stat(s, "0 %", "paths with Q_δ < Q₀ under one common τ (coupled simulation, 20,000 paths)", 6.1, 1.3, 3.4, BLUE, 24);
+stat(s, `${(D.mc[1].frac_paths_Qd_lt_Q0 * 100).toFixed(1)} %`, "paths violating it when each model uses its own stopping rule", 6.1, 2.55, 3.4, ORANGE, 24);
+stat(s, "A = B = F = 0", "supplied reference, N = 180 and 360 (Checks slide)", 6.1, 3.8, 3.4, NAVY, 24);
+s.addNotes("The key step is fixing ONE stopping time for both models before comparing payoffs; the second statistic shows pathwise dominance fails if each model stops by its own rule. Containment does not need the exercise region to be an interval.");
+
+// ---- 8. Item 4 ----------------------------------------------------------------------
+s = pres.addSlide();
+title(s, "Item 4 · The call must decide before the dividend", P1("C(d⁻, s) = max{ (s − K)⁺ , C(d⁺, (1 − δ)s) }"));
+eqCard(s, "Argument", [
+  "The jump LOWERS the call's intrinsic value: ((1 − δ)s − K)⁺ ≤ (s − K)⁺.",
+  "Exercising just before delivers the cum-dividend stock, i.e. captures the dividend.",
+  "⇒ C(d⁻, s) = max{(s − K)⁺, C(d⁺, (1 − δ)s)}, and the max CAN bind (large s).",
+  "Implementation: test call exercise BEFORE applying the dividend at d_k.",
+  "Put (item 1): same max structure, but the pre-jump term never wins ⇒ jump first is exact.",
+], 0.5, 1.3, 5.0, 3.1, 12);
+img(s, "figures/p1_pre_jump_panel2.png", 5.7, 1.3, 3.8, 720, 528);
+s.addText(`Call at S₀ = 100: decide before the jump ${fmt(D.call[3]["C(0,100)"])} · decide after (put-style) ${fmt(D.call[1]["C(0,100)"])} · European ${fmt(D.call[0]["C(0,100)"])}. Pre-jump thresholds s* = 139.7, 128.8, 104.8.`,
+  { x: 0.5, y: 4.5, w: 9, h: 0.6, fontFace: BF, fontSize: 11.5, color: INK, margin: 0, valign: "top", isTextBox: true });
+footer(s, "Our grid solver, N = 180, δ = 0.0125. Deciding after the jump makes the call exercise one grid step early, losing interest K(1 − e^(−rh)).");
+s.addNotes("Mirror image of item 1: for the put the drop helps, so waiting past it is free; for the call the drop hurts, so the holder may want to exercise just before it.");
+
+// ---- 9. Checks with computed boundaries --------------------------------------------
+s = pres.addSlide();
+title(s, "Checks · Ordering on the computed boundaries", P1("g_j = b_j^{0.0125} − b_j^0 ; A = #{j < j*: g_j > 1e-8}, B = max (g_j)⁺/K, F = max_{j ≥ j*} |g_j|/K"));
+const oh = { bold: true, color: WHITE, fill: { color: NAVY }, fontFace: BF, fontSize: 12 };
+const oc = (t) => ({ text: t, options: { fontFace: BF, fontSize: 12, color: INK } });
+const orows = [];
+[180, 360].forEach(N => ["ref", "LS", "NN"].forEach(m => {
+  const r = D.order.find(o => o.N === N && o.method === m);
+  orows.push([oc(String(N)), oc(m === "ref" ? "reference" : m), oc(String(Math.round(r.A))), oc(fmt(r.B, 3)), oc(fmt(r.F, 3))]);
+}));
+s.addTable([["N", "Method", "A", "B", "F"].map(t => ({ text: t, options: oh })), ...orows],
+  { x: 0.5, y: 1.35, w: 4.6, colW: [0.7, 1.3, 0.8, 0.9, 0.9], rowH: 0.36,
+    border: { type: "solid", pt: 0.5, color: "D5DAE6" }, fill: { color: WHITE } });
+bullets(s, [
+  "Reference: exactly ordered, A = B = F = 0; max_s (V₀ − V₀.₀₁₂₅)⁺ = 0 at t₀ for both N.",
+  "LS: ordered before d₃ (A = 0), but F > 0 after d₃ where the problems are identical: the two fits use different samples → regression/sampling error.",
+  "NN: violations only just after d₁ and d₂, where the δ-network overshoots the post-dividend boundary (up to 0.08K).",
+  "Fitted methods are not forced to respect item 3, so A, B, F measure LEARNING error, not the model.",
+], 5.35, 1.35, 4.15, 3.7, 11.5);
+s.addNotes("Only the reference obeys the theorem exactly. The fitted diagnostics tell us where the learning methods are weakest: after d3 for LS, just after dividends for the NN.");
 
 // ---- 6. Part 2: reference verification ---------------------------------------
 s = pres.addSlide();
